@@ -394,13 +394,13 @@
       <appFiles Include="$(MSBuildProjectDirectory)\app\**\*.js" />
       <jsFiles Include="$(MSBuildProjectDirectory)\js\**" />
       <nodeModules Include="$(MSBuildProjectDirectory)\node_modules\**" />
-      <themes Include="$(MSBuildProjectDirectory)\themes\**" />
+      <themes Include="$(MSBuildProjectDirectory)\**\*.css" />
     </ItemGroup>
     <Copy SourceFiles="@(appFiles)" DestinationFiles="@(appFiles->'$(OutputPath)\app\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(jsFiles)" DestinationFiles="@(jsFiles->'$(OutputPath)\js\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(nodeModules)" DestinationFiles="@(nodeModules->'$(OutputPath)\node_modules\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="@(themes)" DestinationFiles="@(themes->'$(OutputPath)\themes\%(RecursiveDir)%(Filename)%(Extension)')" />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\index.html;$(MSBuildProjectDirectory)\web.config" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="@(themes)" DestinationFiles="@(themes->'$(OutputPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\index.html;$(MSBuildProjectDirectory)\web.config;$(MSBuildProjectDirectory)\package.json" DestinationFolder="$(OutputPath)" />
   </Target>
   <Target Name="CleanDist" AfterTargets="Clean">
     <Delete Files="$(OutputPath)\**" />
