@@ -1,5 +1,3 @@
-declare var GLOBAL_MODULES: any;
-
 import {Component, OnInit, Inject} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 

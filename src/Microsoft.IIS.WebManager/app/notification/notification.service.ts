@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiConnection } from '../connect/api-connection';
 
-import { DynamicComponentArgs } from '../common/dynamic.component';
-
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

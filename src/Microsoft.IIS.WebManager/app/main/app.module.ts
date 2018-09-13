@@ -31,6 +31,7 @@ import { Routing } from './app.routes';
 import { HomeComponent } from './home.component';
 import { ConnectComponent } from '../connect/connect.component';
 import { ConnectionPickerComponent } from '../connect/connection-picker.component';
+import { PreAuthComponent } from '../connect/preauth.component';
 import { GetComponent } from './get.component';
 import { HeaderComponent } from '../header/header.component';
 import { SettingsMenuComponent } from '../settings/settings-menu.component';
@@ -45,6 +46,21 @@ import { WebServerService } from '../webserver/webserver.service';
 import { AppPoolsService } from '../webserver/app-pools/app-pools.service';
 import { WebSitesService } from '../webserver/websites/websites.service';
 import { WindowService } from './window.service';
+
+import {
+    AppContextService,
+    AppErrorHandler,
+    CoreServiceModule,
+    DialogModule,
+    GuidedPanelModule,
+    IconModule,
+    IdleModule,
+    LoadingWheelModule,
+    PipesModule,
+    ResourceService,
+    SmeStylesModule,
+    SvgModule
+} from '@microsoft/windows-admin-center-sdk/angular';
 
 @NgModule({
     imports: [
@@ -61,13 +77,27 @@ import { WindowService } from './window.service';
         AutoFocus,
         Tooltip,
         Enum,
-        Selector
+        Selector,
+
+        AppContextService,
+        AppErrorHandler,
+        CoreServiceModule,
+        DialogModule,
+        GuidedPanelModule,
+        IconModule,
+        IdleModule,
+        LoadingWheelModule,
+        PipesModule,
+        ResourceService,
+        SmeStylesModule,
+        SvgModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         ConnectComponent,
         ConnectionPickerComponent,
+        PreAuthComponent,
         GetComponent,
         HeaderComponent,
         SettingsMenuComponent,
@@ -99,4 +129,7 @@ import { WindowService } from './window.service';
     ]
 })
 export class AppModule {
+    constructor(private appContextService: AppContextService) {
+        this.appContextService.initializeModule({});
+    }
 }

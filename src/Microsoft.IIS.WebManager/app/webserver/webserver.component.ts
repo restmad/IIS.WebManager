@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ModuleUtil } from '../utils/Module';
+import { ModuleUtil } from '../utils/module';
 import { OptionsService } from '../main/options.service';
 
 import { HttpClient } from '../common/httpclient';

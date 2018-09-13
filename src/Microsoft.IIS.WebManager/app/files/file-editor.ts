@@ -94,9 +94,10 @@ export class FileEditor {
         this._dirty = false;
 
         this.getFileText().then(txt => {
-            this._text.next(txt);
-            this._dirty = false;
-           
+            if (txt) {
+                this._text.next(txt);
+                this._dirty = false;
+            }
         });
     }
 
@@ -122,10 +123,14 @@ export class FileEditor {
         this._unsupported = false;
         this._text.next(null);
 
-        this.getFileText().then(txt => this._text.next(txt));
+        this.getFileText().then(txt => {
+            if (txt) {
+                this._text.next(txt)
+            }
+        });
     }
 
-    private getFileText(): Promise<string> {
+    private getFileText(): Promise<string | void> {
         if (this.file.size > FileEditor.MAX_FILE_SIZE) {
             this._unsupported = true;
             return Promise.reject<string>("File too large");
@@ -139,7 +144,9 @@ export class FileEditor {
     private codeEditorLoaded(lang: any) {
         if (lang) {
             this.getFileText().then(txt => {
-                this._text.next(txt);
+                if (txt) {
+                    this._text.next(txt);
+                }
             });
         }
         else {

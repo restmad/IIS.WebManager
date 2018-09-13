@@ -8,8 +8,6 @@ import { Subscription } from 'rxjs/Subscription'
 import { DynamicComponent } from './dynamic.component';
 import { ComponentUtil } from '../utils/component';
 import { SectionHelper } from './section.helper';
-import { ArrayUtil } from '../utils/array';
-import { UrlUtil } from '../utils/url';
 
 @Component({
     selector: 'tabs',

@@ -1,5 +1,3 @@
-declare var SETTINGS: any;
-
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
@@ -8,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 
 import { ApiConnection } from '../connect/api-connection'
 import { HttpConnection } from '../connect/httpconnection'
-import { ConnectService } from '../connect/connect.service';
-
+import { ConnectService } from '../connect/connect.service'
+import { SETTINGS } from '../main/settings'
 
 @Component({
     template: `

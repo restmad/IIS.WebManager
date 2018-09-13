@@ -118,7 +118,7 @@ export const ProcessModelIdentityType = {
 }
 
 
-enum IdleTimeoutAction {
+export enum IdleTimeoutAction {
     Terminate,
     Suspend
 }

@@ -1,4 +1,5 @@
-import {Routes, RouterModule} from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {WebServerComponent} from './webserver.component';
 
 class WebServerRouter {
@@ -53,4 +54,4 @@ class WebServerRouter {
 }
 
 // - Updated Export
-export const Routing = RouterModule.forChild(WebServerRouter.getRoutes());
+export const Routing: ModuleWithProviders = RouterModule.forChild(WebServerRouter.getRoutes());

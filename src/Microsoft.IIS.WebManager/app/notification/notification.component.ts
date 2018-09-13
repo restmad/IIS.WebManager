@@ -3,8 +3,6 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
 import { NotificationService } from './notification.service';
 import { Notification, NotificationType } from './notification';
-
-import { ArrayUtil } from '../utils/array';
 import { DynamicComponent } from '../common/dynamic.component';
 
 @Component({

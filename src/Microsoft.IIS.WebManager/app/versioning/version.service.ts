@@ -1,6 +1,3 @@
-
-declare var SETTINGS: any;
-
 import {Injectable, Optional} from '@angular/core';
 import {Http, RequestMethod} from '@angular/http';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/src/providers/angulartics2-ga';
@@ -9,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 import {HttpClient} from '../common/httpclient';
 import {ConnectService} from '../connect/connect.service';
+import {SETTINGS} from '../main/settings';
 import {NotificationService} from '../notification/notification.service';
 import {Notification, NotificationType} from '../notification/notification';
 

@@ -195,7 +195,7 @@ export class FileNavService implements IDisposable {
             })
     }
 
-    private loadDir(path: string): Promise<ApiFile> {
+    private loadDir(path: string): Promise<ApiFile | void> {
         this._notificationService.clearWarnings();
 
         if (!path || path.endsWith(":")) {
