@@ -55,7 +55,7 @@ import { ServerSnapshot } from './server-snapshot';
         </div>
     `,
     styleUrls: [
-        'app/webserver/monitoring/monitoring.css'
+        'monitoring.css'
     ]
 })
 export class CpuChart implements OnDestroy {

@@ -24,14 +24,14 @@ import { OptionsService } from './options.service';
             <div class="sidebar" [class.nav]="_options.active">
                 <vtabs [markLocation]="true" (activate)="_options.refresh()">
                     <item [name]="'Web Sites'" [ico]="'fa fa-globe'">
-                        <dynamic [name]="'WebSiteListComponent'" [module]="'app/webserver/websites/websites.module#WebSitesModule'"></dynamic>
+                        <website-list></website-list>
                     </item>
                     <item [name]="'Web Server'" [ico]="'fa fa-server'" [routerLink]="['/webserver']"></item>
                     <item [name]="'Files'" [ico]="'fa fa-files-o'">
-                        <dynamic [name]="'FilesComponent'" [module]="'app/files/files.module#FilesModule'"></dynamic>
+                        <file-viewer></file-viewer>
                     </item>
                     <item [name]="'Monitoring'" [ico]="'fa fa-medkit'">
-                        <dynamic [name]="'MonitoringComponent'" [module]="'app/webserver/monitoring/monitoring.module#MonitoringModule'"></dynamic>
+                        <monitoring></monitoring>
                     </item>
                 </vtabs>
             </div>

@@ -49,6 +49,7 @@ import { WindowService } from './window.service';
 
 import {
     AppContextService,
+    NavigationService,
     AppErrorHandler,
     CoreServiceModule,
     DialogModule,
@@ -61,6 +62,9 @@ import {
     SmeStylesModule,
     SvgModule
 } from '@microsoft/windows-admin-center-sdk/angular';
+import { FilesModule } from '../files/files.module';
+import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
+import { WebSitesModule } from '../webserver/websites/websites.module';
 
 @NgModule({
     imports: [
@@ -80,6 +84,7 @@ import {
         Selector,
 
         AppContextService,
+        NavigationService,
         AppErrorHandler,
         CoreServiceModule,
         DialogModule,
@@ -90,7 +95,11 @@ import {
         PipesModule,
         ResourceService,
         SmeStylesModule,
-        SvgModule
+        SvgModule,
+
+        WebSitesModule,
+        FilesModule,
+        MonitoringModule
     ],
     declarations: [
         AppComponent,

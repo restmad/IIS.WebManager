@@ -11,6 +11,7 @@ import { LoadingService } from '../notification/loading.service';
 import { WindowService } from './window.service';
 import { VersionService } from '../versioning/version.service';
 import { ServerAnalyticService } from '../webserver/server-analytic.service';
+import { AppContextService, AuthorizationService, DialogService, NavigationService } from '@microsoft/windows-admin-center-sdk/angular';
 
 
 @Component({
@@ -72,6 +73,9 @@ export class AppComponent implements OnInit, OnDestroy {
                 private _windowService: WindowService,
                 private _versionService: VersionService,
                 private _serverAnalyticService: ServerAnalyticService,
+                private appContext: AppContextService,
+                private navigationService: NavigationService,
+                private dialogService: DialogService,
                 private _renderer: Renderer,
                 angulartics2: Angulartics2,
                 angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
@@ -80,6 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
     @ViewChild('mainContainer') mainContainer: ElementRef;
 
     ngOnInit() {
+        this.appContext.ngInit({ dialogService: this.dialogService, navigationService: this.navigationService });
         this._connectService.active.subscribe(c => {
             this._router.events.take(1).subscribe(evt => {
                 if (!c) {
@@ -93,6 +98,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this._loadingSvc.destroy();
+        this.appContext.ngDestroy();
     }
 
     isRouteActive(route: string): boolean {

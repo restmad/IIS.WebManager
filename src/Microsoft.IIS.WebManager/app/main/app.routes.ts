@@ -28,4 +28,7 @@ const routes: Routes = [
 ];
 
 // - Updated Export
-export const Routing: ModuleWithProviders = RouterModule.forRoot(routes);
+export const Routing: ModuleWithProviders = RouterModule.forRoot(routes,
+    {
+        initialNavigation: false
+    });

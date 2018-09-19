@@ -1,8 +1,6 @@
 {
   "apps": [
     {
-      "assets": [
-      ],
       "index": "app/main/index.html",
       "main": "app/main/main.ts",
       "outDir": "bundle",
@@ -33,7 +31,10 @@
       "template": false
     },
     "prefixInterfaces": false,
-    "styleExt": "css"
+    "styleExt": "css",
+    "build": {
+      "showCircularDependencies": false
+    }
   },
   "project": {
     "name": "wac-iis",

@@ -52,7 +52,7 @@ import { ServerSnapshot } from './server-snapshot';
         </div>
     `,
     styleUrls: [
-        'app/webserver/monitoring/monitoring.css'
+        'monitoring.css'
     ]
 })
 export class RequestsChart implements OnDestroy {

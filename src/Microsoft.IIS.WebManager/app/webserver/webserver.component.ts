@@ -28,7 +28,7 @@ import { WebServerService } from './webserver.service';
                         <webserver-general [model]="webServer"></webserver-general>
                     </item>
                     <item *ngFor="let module of modules" [name]="module.name" [ico]="module.ico">
-                        <dynamic [name]="module.component_name" [module]="module.module" [data]="module.data"></dynamic>
+                        <dynamic [name]="module.component_name" [module]="module" [data]="module.data"></dynamic>
                     </item>
                 </vtabs>
             </div>

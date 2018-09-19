@@ -10,6 +10,7 @@ import { ApplicationPool } from '../app-pools/app-pool';
 
 
 @Component({
+    selector: 'website-list',
     template: `
         <loading *ngIf="!_sites && !lazy && !_service.error"></loading>
         <div *ngIf="_service.installStatus == 'stopped'" class="not-installed">

@@ -3,6 +3,7 @@
 import { MonitoringService } from './monitoring.service';
 
 @Component({
+    selector: 'monitoring',
     template: `
         <div *ngIf="!_svc.apiInstalled">
             The monitoring component has not been installed. Update to the <a [routerLink]="['/get']">latest version</a> to begin
