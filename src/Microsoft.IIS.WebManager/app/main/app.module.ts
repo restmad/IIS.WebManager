@@ -31,7 +31,6 @@ import { Routing } from './app.routes';
 import { HomeComponent } from './home.component';
 import { ConnectComponent } from '../connect/connect.component';
 import { ConnectionPickerComponent } from '../connect/connection-picker.component';
-import { PreAuthComponent } from '../connect/preauth.component';
 import { GetComponent } from './get.component';
 import { HeaderComponent } from '../header/header.component';
 import { SettingsMenuComponent } from '../settings/settings-menu.component';
@@ -106,7 +105,6 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
         HomeComponent,
         ConnectComponent,
         ConnectionPickerComponent,
-        PreAuthComponent,
         GetComponent,
         HeaderComponent,
         SettingsMenuComponent,
