@@ -1,9 +1,12 @@
 {
   "apps": [
     {
+      "assets": [
+        { "glob": "manifest.json", "input": "app/resources", "output": "" },
+        { "glob": "**/*", "input": "app/assets/", "output": "assets/" }
+      ],
       "index": "app/main/index.html",
       "main": "app/main/main.ts",
-      "outDir": "bundle",
       "root": "",
       "scripts": [
         "node_modules/jquery/dist/jquery.min.js",

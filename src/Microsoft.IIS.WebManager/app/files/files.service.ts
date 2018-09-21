@@ -20,7 +20,7 @@ declare var unescape: any;
 
 @Injectable()
 export class FilesService implements IDisposable {
-    private _uploadSignal: number = -1;
+    private _uploadSignal: NodeJS.Timer = null;
     private _fields = "name,id,alias,type,physical_path,size,created,last_modified,mime_type,e_tag,parent";
     private _subscriptions: Array<Subscription> = [];
     private _uploadComponentName: string = "UploadComponent";
@@ -974,17 +974,17 @@ export class FilesService implements IDisposable {
 
     private signalUploadDisplay(hide: boolean) {
         if (hide) {
-            if (this._uploadSignal == -1) {
+            if (this._uploadSignal == null) {
                 this._uploadSignal = setTimeout(() => {
                     this.showUploads(false);
-                    this._uploadSignal = -1
+                    this._uploadSignal = null
                 }, 500);
             }
         }
         else {
-            if (this._uploadSignal != -1) {
+            if (this._uploadSignal != null) {
                 clearTimeout(this._uploadSignal);
-                this._uploadSignal = -1;
+                this._uploadSignal = null;
             }
         }
     }

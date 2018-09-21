@@ -97,7 +97,7 @@ export class GetComponent implements OnDestroy {
     ];
 
     private _inProgress: boolean;
-    private _pingTimeoutId: number;
+    private _pingTimeout: NodeJS.Timer;
     private _client: HttpConnection;
     private _status: string;
     private _activeConnection: ApiConnection;
@@ -153,14 +153,14 @@ export class GetComponent implements OnDestroy {
                 }
                 else {
                     if (this._inProgress) {
-                        this._pingTimeoutId = setTimeout(() => this.ping(i + 1), 2000);
+                        this._pingTimeout = setTimeout(() => this.ping(i + 1), 2000);
                     }
                 }
             })
     }
 
     private finish() {
-        clearTimeout(this._pingTimeoutId);
+        clearTimeout(this._pingTimeout);
 
         this._inProgress = false;
 

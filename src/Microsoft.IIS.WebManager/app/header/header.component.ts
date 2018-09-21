@@ -128,7 +128,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulart
 export class HeaderComponent implements OnDestroy {
     private _subs = [];
     private _inProgress: boolean;
-    private _timeout: number;
+    private _timeout: NodeJS.Timer;
     private _window: Window = window;
 
     constructor(loadingSvc: LoadingService,
@@ -143,7 +143,7 @@ export class HeaderComponent implements OnDestroy {
             else {
                 if (this._timeout) {
                     clearTimeout(this._timeout);
-                    this._timeout = 0;
+                    this._timeout = null;
                     setTimeout(_ => this._inProgress = false, 300);
                 }
             }

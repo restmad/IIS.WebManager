@@ -49,7 +49,7 @@ import { DynamicComponent } from '../common/dynamic.component';
 })
 export class NotificationComponent implements OnDestroy {
     private _active: boolean;
-    private _warningTimer: number;
+    private _warningTimer: NodeJS.Timer;
     private _warning: Notification;
     private _subscriptions: Subscription[] = [];
     private _notifications: Array<Notification> = [];
@@ -139,7 +139,7 @@ export class NotificationComponent implements OnDestroy {
     }
 
     private resetWarningTimer() {
-        if (this._warningTimer > 0) {
+        if (this._warningTimer != null) {
             clearTimeout(this._warningTimer);
         }
 
@@ -153,11 +153,11 @@ export class NotificationComponent implements OnDestroy {
     }
 
     private onFocus() {
-        if (this._warningTimer <= 0) {
-            this.resetWarningTimer();
+        if (this._warningTimer != null) {
+            clearTimeout(this._warningTimer);
         }
         else {
-            clearTimeout(this._warningTimer);
+            this.resetWarningTimer();
         }
     }
 }

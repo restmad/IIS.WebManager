@@ -24,7 +24,7 @@ import { OptionsService } from './options.service';
             <div class="sidebar" [class.nav]="_options.active">
                 <vtabs [markLocation]="true" (activate)="_options.refresh()">
                     <item [name]="'Web Sites'" [ico]="'fa fa-globe'">
-                        <website-list></website-list>
+                        <website-list-component></website-list-component>
                     </item>
                     <item [name]="'Web Server'" [ico]="'fa fa-server'" [routerLink]="['/webserver']"></item>
                     <item [name]="'Files'" [ico]="'fa fa-files-o'">

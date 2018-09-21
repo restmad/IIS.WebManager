@@ -82,9 +82,6 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
         Enum,
         Selector,
 
-        AppContextService,
-        NavigationService,
-        AppErrorHandler,
         CoreServiceModule,
         DialogModule,
         GuidedPanelModule,
@@ -92,7 +89,6 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
         IdleModule,
         LoadingWheelModule,
         PipesModule,
-        ResourceService,
         SmeStylesModule,
         SvgModule,
 
@@ -136,7 +132,7 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
     ]
 })
 export class AppModule {
-    constructor(private appContextService: AppContextService) {
+    constructor(private appContextService: AppContextService, private navigationService: NavigationService) {
         this.appContextService.initializeModule({});
     }
 }

@@ -65,8 +65,10 @@ import { LimitsComponent } from './limits.component';
         BindingList,
         BindingItem,
         LimitsComponent
+    ],
+    exports: [
+        WebSiteListComponent
     ]
-
 })
 export class WebSitesModule {
 }
