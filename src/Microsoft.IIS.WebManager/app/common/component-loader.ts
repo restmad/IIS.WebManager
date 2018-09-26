@@ -1,6 +1,5 @@
-import {
-    ModuleDefinition,
-    WebSiteListComponentName,
+import { Type, Compiler, ModuleWithComponentFactories } from '@angular/core'
+import { WebSiteListComponentName,
     AppPoolComponentName,
     WebFilesComponentName,
     WebAppListComponentName,
@@ -21,81 +20,130 @@ import {
     HttpResponseHeadersComponentName,
     RequestTracingComponentName,
     StaticContentComponentName,
-    UrlRewriteComponentName } from "../main/settings";
+    UrlRewriteComponentName,
+    ComponentReference } from '../main/settings'
+
 
 export class ComponentLoader {
-
-    public static LoadAsync(name, module: ModuleDefinition) {
-        switch (module.component_name) {
+    public static async LoadAsync(compiler: Compiler, component: ComponentReference): Promise<ModuleWithComponentFactories<{}>> {
+        // cannot assign module type as property of ComponentReference to avoid circular reference
+        var moduleType : Promise<Type<{}>> = null
+        switch (component.component_name) {
             case WebSiteListComponentName:
-                return import('../webserver/websites/websites.module').then(m => {return m[name]})
+                moduleType = import('../webserver/websites/websites.module').then(m => {
+                    return m.WebSitesModule
+                }) ; break;
 
             case AppPoolComponentName:
-                return import('../webserver/app-pools/app-pools.module').then(m => {return m[name]})
+                moduleType = import('../webserver/app-pools/app-pools.module').then(m => {
+                    return m.AppPoolsModule
+                }) ; break;
 
             case WebFilesComponentName:
-                return import('../webserver/files/webfiles.module').then(m => {return m[name]})
+                moduleType = import('../webserver/files/webfiles.module').then(m => {
+                    return m.WebFilesModule
+                }) ; break;
 
             case WebAppListComponentName:
-                return import('../webserver/webapps/webapps.module').then(m => {return m[name]})
+                moduleType = import('../webserver/webapps/webapps.module').then(m => {
+                    return m.WebAppsModule
+                }) ; break;
 
             case VdirListComponentName:
-                return import('../webserver/vdirs/vdirs.module').then(m => {return m[name]})
+                moduleType = import('../webserver/vdirs/vdirs.module').then(m => {
+                    return m.VdirsModule
+                }) ; break;
 
             case AuthenticationComponentName:
-                return import('../webserver/authentication/authentication.module').then(m => {return m[name]})
+                moduleType = import('../webserver/authentication/authentication.module').then(m => {
+                    return m.AuthenticationModule
+                }) ; break;
 
             case AuthorizationComponentName:
-                return import('../webserver/authorization/authorization.module').then(m => {return m[name]})
+                moduleType = import('../webserver/authorization/authorization.module').then(m => {
+                    return m.AuthorizationModule
+                }) ; break;
 
             case CertificatesComponentName:
-                return import('../certificates/certificates.module').then(m => {return m[name]})
+                moduleType = import('../certificates/certificates.module').then(m => {
+                    return m.CertificatesModule
+                }) ; break;
 
             case CentralCertificateComponentName:
-                return import('../webserver/central-certificates/central-certificate.module').then(m => {return m[name]})
+                moduleType = import('../webserver/central-certificates/central-certificate.module').then(m => {
+                    return m.CentralCertificateModule
+                }) ; break;
 
             case DefaultDocumentsComponentName:
-                return import('../webserver/default-documents/default-documents.module').then(m => {return m[name]})
+                moduleType = import('../webserver/default-documents/default-documents.module').then(m => {
+                    return m.DefaultDocumentsModule
+                }) ; break;
 
             case DirectoryBrowsingComponentName:
-                return import('../webserver/directory-browsing/directory-browsing.module').then(m => {return m[name]})
+                moduleType = import('../webserver/directory-browsing/directory-browsing.module').then(m => {
+                    return m.DirectoryBrowsingModule
+                }) ; break;
 
             case IpRestrictionsComponentName:
-                return import('../webserver/ip-restrictions/ip-restrictions.module').then(m => {return m[name]})
+                moduleType = import('../webserver/ip-restrictions/ip-restrictions.module').then(m => {
+                    return m.IpRestrictionsModule
+                }) ; break;
 
             case LoggingComponentName:
-                return import('../webserver/logging/logging.module').then(m => {return m[name]})
+                moduleType = import('../webserver/logging/logging.module').then(m => {
+                    return m.LoggingModule
+                }) ; break;
 
             case MimeMapsComponentName:
-                return import('../webserver/mime-maps/mime-maps.module').then(m => {return m[name]})
+                moduleType = import('../webserver/mime-maps/mime-maps.module').then(m => {
+                    return m.MimeMapsModule
+                }) ; break;
 
             case MonitoringComponentName:
-                return import('../webserver/monitoring/monitoring.module').then(m => {return m[name]})
+                moduleType = import('../webserver/monitoring/monitoring.module').then(m => {
+                    return m.MonitoringModule
+                }) ; break;
 
             case ModulesComponentName:
-                return import('../webserver/modules/modules.module').then(m => {return m[name]})
+                moduleType = import('../webserver/modules/modules.module').then(m => {
+                    return m.ModulesModule
+                }) ; break;
 
             case CompressionComponentName:
-                return import('../webserver/compression/compression.module').then(m => {return m[name]})
+                moduleType = import('../webserver/compression/compression.module').then(m => {
+                    return m.CompressionModule
+                }) ; break;
 
             case RequestFilteringComponentName:
-                return import('../webserver/request-filtering/request-filtering.module').then(m => {return m[name]})
+                moduleType = import('../webserver/request-filtering/request-filtering.module').then(m => {
+                    return m.RequestFilteringModule
+                }) ; break;
 
             case HttpResponseHeadersComponentName:
-                return import('../webserver/http-response-headers/http-response-headers.module').then(m => {return m[name]})
+                moduleType = import('../webserver/http-response-headers/http-response-headers.module').then(m => {
+                    return m.HttpResponseHeadersModule
+                }) ; break;
 
             case RequestTracingComponentName:
-                return import('../webserver/request-tracing/request-tracing.module').then(m => {return m[name]})
+                moduleType = import('../webserver/request-tracing/request-tracing.module').then(m => {
+                    return m.RequestTracingModule
+                }) ; break;
 
             case StaticContentComponentName:
-                return import('../webserver/static-content/static-content.module').then(m => {return m[name]})
+                moduleType = import('../webserver/static-content/static-content.module').then(m => {
+                    return m.StaticContentModule
+                }) ; break;
 
             case UrlRewriteComponentName:
-                return import('../webserver/url-rewrite/url-rewrite.module').then(m => {return m[name]})
+                moduleType = import('../webserver/url-rewrite/url-rewrite.module').then(m => {
+                    return m.UrlRewriteModule
+                }) ; break;
 
             default:
-                throw new Error("Cannot load module " + JSON.stringify(module))
+                throw new Error("Unexpected component " + component.component_name)
         }
-
+        return moduleType.then(m => {
+            return compiler.compileModuleAndAllComponentsAsync(m)
+        })
     }
 }

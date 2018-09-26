@@ -26,7 +26,6 @@ import { Logger } from '../common/logger';
 import { OptionsService } from './options.service';
 
 import { AppComponent } from './app.component';
-import { Routing } from './app.routes';
 
 import { HomeComponent } from './home.component';
 import { ConnectComponent } from '../connect/connect.component';
@@ -46,31 +45,33 @@ import { AppPoolsService } from '../webserver/app-pools/app-pools.service';
 import { WebSitesService } from '../webserver/websites/websites.service';
 import { WindowService } from './window.service';
 
-import {
-    AppContextService,
-    NavigationService,
-    AppErrorHandler,
-    CoreServiceModule,
-    DialogModule,
-    GuidedPanelModule,
-    IconModule,
-    IdleModule,
-    LoadingWheelModule,
-    PipesModule,
-    ResourceService,
-    SmeStylesModule,
-    SvgModule
-} from '@microsoft/windows-admin-center-sdk/angular';
+// import {
+//     AppContextService,
+//     NavigationService,
+//     AppErrorHandler,
+//     CoreServiceModule,
+//     DialogModule,
+//     GuidedPanelModule,
+//     IconModule,
+//     IdleModule,
+//     LoadingWheelModule,
+//     PipesModule,
+//     ResourceService,
+//     SmeStylesModule,
+//     SvgModule
+// } from '@microsoft/windows-admin-center-sdk/angular';
 import { FilesModule } from '../files/files.module';
 import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
 import { WebSitesModule } from '../webserver/websites/websites.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         FormsModule,
-        Routing,
+        AppRoutingModule,
         Angulartics2Module.forRoot(),
         BModel,
         NotFound,
@@ -82,19 +83,20 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
         Enum,
         Selector,
 
-        CoreServiceModule,
-        DialogModule,
-        GuidedPanelModule,
-        IconModule,
-        IdleModule,
-        LoadingWheelModule,
-        PipesModule,
-        SmeStylesModule,
-        SvgModule,
+        // CoreServiceModule,
+        // DialogModule,
+        // GuidedPanelModule,
+        // IconModule,
+        // IdleModule,
+        // LoadingWheelModule,
+        // PipesModule,
+        // SmeStylesModule,
+        // SvgModule,
 
         WebSitesModule,
         FilesModule,
-        MonitoringModule
+        MonitoringModule,
+        AngularFontAwesomeModule
     ],
     declarations: [
         AppComponent,
@@ -132,7 +134,7 @@ import { WebSitesModule } from '../webserver/websites/websites.module';
     ]
 })
 export class AppModule {
-    constructor(private appContextService: AppContextService, private navigationService: NavigationService) {
-        this.appContextService.initializeModule({});
-    }
+    // constructor(private appContextService: AppContextService, private navigationService: NavigationService) {
+    //     this.appContextService.initializeModule({});
+    // }
 }

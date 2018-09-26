@@ -2,10 +2,8 @@
 import {NgModule, Directive, Input, ReflectiveInjector, ModuleWithComponentFactories, ComponentFactory, ViewContainerRef, NgModuleRef, ComponentRef, Compiler, OnInit, Injector} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-
 import {ComponentLoader} from './component-loader';
-import { ModuleDefinition } from 'app/main/settings';
-
+import { ComponentReference } from '../main/settings';
 
 @Directive({
     selector: 'dynamic',
@@ -15,7 +13,7 @@ export class DynamicComponent implements OnInit {
     //
     // Angular2 module loading syntax
     // '<modulePath>#<moduleName>'
-    @Input() module: ModuleDefinition;
+    @Input() module: ComponentReference;
     @Input() selector: string;
     @Input() data: any;
     @Input() loader: any;
@@ -85,7 +83,7 @@ export class DynamicComponent implements OnInit {
         }
 
         let vRef = this.vcRef;
-        return DynamicComponent.CreateModuleWithComponentFactories(this.compiler, this.module)
+        return ComponentLoader.LoadAsync(this.compiler, this.module)
             .then(moduleWithComponentFactories => {
 
                 let targetFactory = moduleWithComponentFactories.componentFactories.find(x => {
@@ -112,13 +110,6 @@ export class DynamicComponent implements OnInit {
                 this._componentRef.instance[key] = data[key];
             }
         }
-    }
-
-    private static CreateModuleWithComponentFactories(compiler: Compiler, module: ModuleDefinition): Promise<ModuleWithComponentFactories<{}>> {
-        return ComponentLoader.LoadAsync(name, module)
-            .then(m => {
-                return compiler.compileModuleAndAllComponentsAsync(m)
-            });
     }
 }
 
