@@ -32,8 +32,6 @@ const appRoutes: Routes = [
             {
                 // un-comment to enable debug log messages
                 enableTracing: true,
-
-                // don't navigate at initially.
                 initialNavigation: true
             })
     ],

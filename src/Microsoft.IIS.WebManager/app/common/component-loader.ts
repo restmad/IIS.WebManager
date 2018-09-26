@@ -21,7 +21,8 @@ import { WebSiteListComponentName,
     RequestTracingComponentName,
     StaticContentComponentName,
     UrlRewriteComponentName,
-    ComponentReference } from '../main/settings'
+    ComponentReference,
+    FilesComponentName} from '../main/settings'
 
 
 export class ComponentLoader {
@@ -137,6 +138,11 @@ export class ComponentLoader {
             case UrlRewriteComponentName:
                 moduleType = import('../webserver/url-rewrite/url-rewrite.module').then(m => {
                     return m.UrlRewriteModule
+                }) ; break;
+
+            case FilesComponentName:
+                moduleType = import('../files/files.module').then(m => {
+                    return m.FilesModule
                 }) ; break;
 
             default:

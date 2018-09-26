@@ -28,11 +28,13 @@ export const HttpResponseHeadersComponentName = "HttpResponseHeadersComponent"
 export const RequestTracingComponentName = "RequestTracingComponent"
 export const StaticContentComponentName = "StaticContentComponent"
 export const UrlRewriteComponentName = "UrlRewriteComponent"
-
+export const FilesComponentName = "FilesComponent"
 
 export class ComponentReference {
     constructor(public name: string, public ico: string, public component_name: string, public api_name: string, public api_path: string) {}
 }
+
+export const FilesComponentReference: ComponentReference = new ComponentReference("Files", "fa fa-files-o", FilesComponentName, "files", "/api/webserver/url-rewrite/{id}")
 
 export var GLOBAL_MODULES = [
     new ComponentReference("Web Sites", "fa fa-globe", WebSiteListComponentName, "websites", "/api/webserver/websites?application_pool.id={appPoolId}"),
