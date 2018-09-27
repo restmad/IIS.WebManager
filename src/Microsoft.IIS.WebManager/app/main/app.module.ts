@@ -104,5 +104,4 @@ import { AppRoutingModule } from './app-routing.module';
         { provide: "FilesService", useClass: FilesService }
     ]
 })
-export class AppModule {
-}
+export class AppModule {}

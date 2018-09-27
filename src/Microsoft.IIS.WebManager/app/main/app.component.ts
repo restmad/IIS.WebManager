@@ -13,7 +13,6 @@ import { VersionService } from '../versioning/version.service';
 import { ServerAnalyticService } from '../webserver/server-analytic.service';
 import { AppContextService, NavigationService } from '@microsoft/windows-admin-center-sdk/angular';
 
-
 @Component({
     selector: 'app-root',
     styles: [`
@@ -73,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
         private _windowService: WindowService,
         private _versionService: VersionService,
         private _serverAnalyticService: ServerAnalyticService,
-        @Optional() private appContext: AppContextService,
+        @Optional() private appContextService: AppContextService,
         @Optional() private navigationService: NavigationService,
         private _renderer: Renderer,
         angulartics2: Angulartics2,
@@ -83,8 +82,8 @@ export class AppComponent implements OnInit, OnDestroy {
     @ViewChild('mainContainer') mainContainer: ElementRef;
 
     ngOnInit() {
-        if (this.appContext != null) {
-            this.appContext.ngInit({ navigationService: this.navigationService });
+        if (this.appContextService != null) {
+            this.appContextService.ngInit({ navigationService: this.navigationService });
         }
         this._connectService.active.subscribe(c => {
             this._router.events.take(1).subscribe(evt => {
@@ -99,8 +98,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this._loadingSvc.destroy();
-        if (this.appContext != null) {
-            this.appContext.ngDestroy();
+        if (this.appContextService != null) {
+            this.appContextService.ngDestroy();
         }
     }
 

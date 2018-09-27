@@ -1,7 +1,8 @@
-import { NgModule, Optional } from '@angular/core';
+import { NgModule, Optional, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from "@angular/router";
 
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulartics2-ga';
@@ -49,7 +50,16 @@ import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
 import { WebSitesModule } from '../webserver/websites/websites.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppRoutingModule } from './app-routing.module';
-import { AppContextService, NavigationService, CoreServiceModule } from '@microsoft/windows-admin-center-sdk/angular'; 
+import {
+    AppContextService,
+    ResourceService,
+    CoreServiceModule,
+    AppErrorHandler,
+    DialogModule,
+    IdleModule,
+    IdleComponent
+} from '@microsoft/windows-admin-center-sdk/angular';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -67,11 +77,14 @@ import { AppContextService, NavigationService, CoreServiceModule } from '@micros
         Tooltip,
         Enum,
         Selector,
-        CoreServiceModule,
         WebSitesModule,
         FilesModule,
         MonitoringModule,
-        AngularFontAwesomeModule
+        AngularFontAwesomeModule,
+        CoreServiceModule,
+        CommonModule,
+        BrowserModule,
+        DialogModule
     ],
     declarations: [
         AppComponent,
@@ -99,18 +112,22 @@ import { AppContextService, NavigationService, CoreServiceModule } from '@micros
         Logger,
         OptionsService,
         Angulartics2GoogleAnalytics,
-        AppContextService,
-        NavigationService,
 
         { provide: "WebServerService", useClass: WebServerService },
         { provide: "WebSitesService", useClass: WebSitesService },
         { provide: "AppPoolsService", useClass: AppPoolsService },
-        { provide: "FilesService", useClass: FilesService }
+        { provide: "FilesService", useClass: FilesService },
+
+        ResourceService,
+        {
+            provide: ErrorHandler,
+            useClass: AppErrorHandler
+        }
     ]
 })
 export class WACAppModule {
-    constructor(private appContextService: AppContextService, private navigationService: NavigationService) {
-        alert("WAC Module loaded")
-        this.appContextService.initializeModule({});
+    constructor(private appContextService: AppContextService, private router: Router) {
+        this.appContextService.initializeModule({})
+        this.router.config.push({ path: 'idle', component: IdleComponent })
     }
 }

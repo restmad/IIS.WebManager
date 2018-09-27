@@ -1,5 +1,5 @@
 
-import './polyfills';
+import './polyfills'
 
 import { environment } from '../environments/environment'
 import { AppModule } from './app.module'
@@ -17,7 +17,7 @@ if (environment.WAC) {
     CoreEnvironment.initialize(
         {
             name: 'microsoft.wac-iis',
-            isProduction: true,
+            isProduction: environment.Production,
             shellOrigin: '*'
         },
         {
