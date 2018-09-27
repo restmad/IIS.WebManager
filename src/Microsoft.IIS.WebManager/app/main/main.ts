@@ -1,12 +1,29 @@
+
 import './polyfills';
 
-import { AppModule } from './app.module';
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { environment } from '../environments/environments';
+import { environment } from '../environments/environment'
+import { AppModule } from './app.module'
+import { WACAppModule } from './app.wac.module'
+import { CoreEnvironment } from '@microsoft/windows-admin-center-sdk/core'
+import { enableProdMode } from '@angular/core'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
 
-if (environment.isProduction) {
+if (environment.Production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+if (environment.WAC) {
+    // initialize SME module environment with localization settings.
+    CoreEnvironment.initialize(
+        {
+            name: 'microsoft.wac-iis',
+            isProduction: true,
+            shellOrigin: '*'
+        },
+        {
+            resourcesPath: 'assets/strings'
+        })
+        .then(() => platformBrowserDynamic().bootstrapModule(WACAppModule));
+} else {
+    platformBrowserDynamic().bootstrapModule(AppModule);
+}

@@ -1,6 +1,36 @@
 {
   "apps": [
     {
+      "name": "standalone",
+      "assets": [
+        { "glob": "manifest.json", "input": "app/resources", "output": "" },
+        { "glob": "**/*", "input": "app/assets/", "output": "assets/" }
+      ],
+      "index": "app/main/index.html",
+      "main": "app/main/main.ts",
+      "root": "",
+      "scripts": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
+      "styles": [
+        "node_modules/primeng/resources/primeng.min.css",
+        "node_modules/primeng/resources/themes/bootstrap/theme.css",
+        "node_modules/font-awesome/css/font-awesome.min.css",
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "themes/main.css",
+        "themes/themes.common.css",
+        "themes/themes.blue.css"
+      ],
+      "tsconfig": "tsconfig.json",
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "app/environments/environment.ts",
+        "prod": "app/environments/environment.ts"
+      }
+    },
+    {
+      "name": "wac",
       "assets": [
         { "glob": "manifest.json", "input": "app/resources", "output": "" },
         { "glob": "**/*", "input": "app/assets/", "output": "assets/" }
@@ -22,7 +52,12 @@
         "themes/themes.common.css",
         "themes/themes.blue.css"
       ],
-      "tsconfig": "tsconfig.json"
+      "tsconfig": "tsconfig.json",
+      "environmentSource": "environments/environment.wac.ts",
+      "environments": {
+        "dev": "app/environments/environment.wac.ts",
+        "prod": "app/environments/environment.wac.prod.ts"
+      }
     }
   ],
   "defaults": {

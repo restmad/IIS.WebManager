@@ -44,7 +44,6 @@ import { WebServerService } from '../webserver/webserver.service';
 import { AppPoolsService } from '../webserver/app-pools/app-pools.service';
 import { WebSitesService } from '../webserver/websites/websites.service';
 import { WindowService } from './window.service';
-import { AppContextService, NavigationService, CoreServiceModule } from '@microsoft/windows-admin-center-sdk/angular';
 import { FilesModule } from '../files/files.module';
 import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
 import { WebSitesModule } from '../webserver/websites/websites.module';
@@ -67,7 +66,6 @@ import { AppRoutingModule } from './app-routing.module';
         Tooltip,
         Enum,
         Selector,
-        CoreServiceModule,
         WebSitesModule,
         FilesModule,
         MonitoringModule,
@@ -87,9 +85,7 @@ import { AppRoutingModule } from './app-routing.module';
         InformationComponent,
         NewVersionNotificationComponent
     ],
-    bootstrap: [
-        AppComponent
-    ],
+    bootstrap: [ AppComponent ],
     providers: [
         HttpClient,
         NotificationService,
@@ -109,11 +105,4 @@ import { AppRoutingModule } from './app-routing.module';
     ]
 })
 export class AppModule {
-    constructor(
-        @Optional() private appContextService: AppContextService,
-        @Optional() private navigationService: NavigationService) {
-        if (this.appContextService) {
-            this.appContextService.initializeModule({});
-        }
-    }
 }
