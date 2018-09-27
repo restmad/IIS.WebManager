@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -44,22 +44,7 @@ import { WebServerService } from '../webserver/webserver.service';
 import { AppPoolsService } from '../webserver/app-pools/app-pools.service';
 import { WebSitesService } from '../webserver/websites/websites.service';
 import { WindowService } from './window.service';
-
-// import {
-//     AppContextService,
-//     NavigationService,
-//     AppErrorHandler,
-//     CoreServiceModule,
-//     DialogModule,
-//     GuidedPanelModule,
-//     IconModule,
-//     IdleModule,
-//     LoadingWheelModule,
-//     PipesModule,
-//     ResourceService,
-//     SmeStylesModule,
-//     SvgModule
-// } from '@microsoft/windows-admin-center-sdk/angular';
+import { AppContextService, NavigationService, CoreServiceModule } from '@microsoft/windows-admin-center-sdk/angular';
 import { FilesModule } from '../files/files.module';
 import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
 import { WebSitesModule } from '../webserver/websites/websites.module';
@@ -82,17 +67,7 @@ import { AppRoutingModule } from './app-routing.module';
         Tooltip,
         Enum,
         Selector,
-
-        // CoreServiceModule,
-        // DialogModule,
-        // GuidedPanelModule,
-        // IconModule,
-        // IdleModule,
-        // LoadingWheelModule,
-        // PipesModule,
-        // SmeStylesModule,
-        // SvgModule,
-
+        CoreServiceModule,
         WebSitesModule,
         FilesModule,
         MonitoringModule,
@@ -134,7 +109,11 @@ import { AppRoutingModule } from './app-routing.module';
     ]
 })
 export class AppModule {
-    // constructor(private appContextService: AppContextService, private navigationService: NavigationService) {
-    //     this.appContextService.initializeModule({});
-    // }
+    constructor(
+        @Optional() private appContextService: AppContextService,
+        @Optional() private navigationService: NavigationService) {
+        if (this.appContextService) {
+            this.appContextService.initializeModule({});
+        }
+    }
 }
