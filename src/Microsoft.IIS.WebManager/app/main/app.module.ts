@@ -49,6 +49,7 @@ import { MonitoringModule } from '../webserver/monitoring/monitoring.module';
 import { WebSitesModule } from '../webserver/websites/websites.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppRoutingModule } from './app-routing.module';
+import { Runtime, StandardRuntime } from '../runtime/runtime';
 
 @NgModule({
     imports: [
@@ -101,7 +102,8 @@ import { AppRoutingModule } from './app-routing.module';
         { provide: "WebServerService", useClass: WebServerService },
         { provide: "WebSitesService", useClass: WebSitesService },
         { provide: "AppPoolsService", useClass: AppPoolsService },
-        { provide: "FilesService", useClass: FilesService }
+        { provide: "FilesService", useClass: FilesService },
+        { provide: "Runtime", useClass: StandardRuntime }
     ]
 })
 export class AppModule {}
