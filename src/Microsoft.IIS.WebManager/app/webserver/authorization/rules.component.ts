@@ -34,8 +34,8 @@ import { Authorization, AuthRule } from './authorization'
 })
 export class RulesComponent implements OnDestroy {
     id: string;
+    _rules: Array<AuthRule>;
     private _authorization: Authorization;
-    private _rules: Array<AuthRule>;
     private _newRule: AuthRule;
     private _error: any;
     private _subscriptions: Array<Subscription> = [];

@@ -158,7 +158,7 @@ import { SectionHelper } from './section.helper';
             <div class="tabs-container">
                 <div class='tabs border-active'>
                     <ul>
-                        <li #item *ngFor="let tab of tabs; let i = index;" class="border-active border-bottom-normal" [ngClass]="{active: tab.active}" (click)="selectTab(i)">
+                        <li #item *ngFor="let tab of tabs; let i = index" class="border-active border-bottom-normal" [ngClass]="{active: tab.active}" (click)="selectTab(i)">
                             <span>{{tab.name}}</span>
                         </li>
                         <li *ngIf="_selectedIndex != -1" class="sticky background-normal border-active border-bottom-normal" [ngClass]="{active: !!'true', hidden: tabs[_selectedIndex].visible}" (click)="selectTab(_selectedIndex)">
@@ -169,7 +169,7 @@ import { SectionHelper } from './section.helper';
                 </div>
             </div>
 
-            <div class='menu-btn color-active background-normal' #menuBtn tabindex='0' (click)="showMenu()"><span class="border-active hover-active color-normal" [class.background-active]="_menuOn"><i class="fa fa-ellipsis-h"></i></span></div>
+            <div class='menu-btn color-active background-normal' #menuBtn tabindex='0' (click)="showMenu(true)"><span class="border-active hover-active color-normal" [class.background-active]="_menuOn"><i class="fa fa-ellipsis-h"></i></span></div>
             <div class='menu border-active background-normal' [hidden]="!_menuOn">
                 <ul>
                     <li *ngFor="let tab of tabs; let i = index;" class="hover-active" [ngClass]="{'background-active': tab.active}" (click)="selectTab(i)">{{tab.name}}</li>
@@ -188,10 +188,10 @@ export class TabsComponent implements OnDestroy, AfterViewInit {
     @Input() markLocation: boolean;
 
     tabs: TabComponent[];
+    _selectedIndex = -1;
+    _menuOn: boolean = false;
     
     private _default: string;
-    private _selectedIndex = -1;
-    private _menuOn: boolean = false;
     private _tabsItems: Array<ElementRef>;
     private _hashCache: Array<string> = [];
     private _sectionHelper: SectionHelper;
@@ -245,7 +245,7 @@ export class TabsComponent implements OnDestroy, AfterViewInit {
         this.tabs.push(tab);
     }
 
-    private selectTab(index: number) {
+    selectTab(index: number) {
         this._sectionHelper.selectSection(this.tabs[index].name);
     }
 
@@ -262,7 +262,7 @@ export class TabsComponent implements OnDestroy, AfterViewInit {
         this.refresh();
     }
 
-    private showMenu(show: boolean) {
+    showMenu(show: boolean) {
         this._menuOn = (show == null) ? true : show;
     }
 

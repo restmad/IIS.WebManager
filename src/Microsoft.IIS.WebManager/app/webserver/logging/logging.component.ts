@@ -78,7 +78,7 @@ export class LoggingComponent implements OnInit, OnDestroy {
     private _error: any;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: LoggingService,
+    constructor(public _service: LoggingService,
                 private _notificationService: NotificationService) {
     }
 

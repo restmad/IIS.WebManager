@@ -6,7 +6,7 @@ import { ProviderSetting } from '../url-rewrite';
 @Component({
     selector: 'provider-setting',
     template: `
-        <div *ngIf="setting && !_editing" class="grid-item row" [class.background-selected]="_editing" (dblclick)="edit()">
+        <div *ngIf="setting != null && !_editing" class="grid-item row" [class.background-selected]="_editing" (dblclick)="edit()">
             <div class="col-xs-6 col-sm-4 valign">
                 {{setting.name}}
             </div>
@@ -38,7 +38,7 @@ export class SettingComponent implements OnChanges {
     @Input() public setting: ProviderSetting;
     @Output('delete') public deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean;
+    _editing: boolean;
     private _original: ProviderSetting;
 
     ngOnChanges(changes: { [key: string]: SimpleChange; }): any {

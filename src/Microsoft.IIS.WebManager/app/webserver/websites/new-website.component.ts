@@ -2,7 +2,6 @@ import { Component, ViewChild, Output, EventEmitter, Inject } from '@angular/cor
 import { Subject } from 'rxjs/Subject'
 
 import { Selector } from '../../common/selector';
-import { FileSelectorComponent } from '../../files/file-selector.component';
 
 import { ApiFile } from '../../files/file';
 import { WebSite, Binding } from './site';
@@ -79,7 +78,7 @@ import { ApplicationPool } from '../app-pools/app-pool';
 })
 export class NewWebSiteComponent {
     site: WebSite;
-    private _createAppPool: boolean = true;
+    _createAppPool: boolean = true;
 
     private _nameChange: Subject<string> = new Subject<string>();
 
@@ -149,14 +148,14 @@ export class NewWebSiteComponent {
         this.cancel.emit(null);
     }
 
-    private onNewAppPool(value: boolean) {
+    onNewAppPool(value: boolean) {
         if (!value) {
             this.site.application_pool = null;
             setTimeout(() => this.selectAppPool(), 10);
         }
     }
 
-    private IsValid(): boolean {
+    IsValid(): boolean {
         return !(!this.site.name || !this.site.physical_path || this.site.bindings.length == 0);
     }
 
@@ -176,7 +175,8 @@ export class NewWebSiteComponent {
             certificate: null,
             binding_information: null,
             protocol: "http",
-            require_sni: false
+            require_sni: false,
+            isNew: true
         };
 
         site.bindings.unshift(binding);
@@ -185,7 +185,7 @@ export class NewWebSiteComponent {
         this._createAppPool = true;
     }
 
-    private onNameChange(val: string) {
+    onNameChange(val: string) {
         this.site.name = val;
         this._nameChange.next(val);
     }
@@ -208,7 +208,7 @@ export class NewWebSiteComponent {
         this.site.application_pool = pool;
     }
 
-    private onSelectPath(event: Array<ApiFile>) {
+    onSelectPath(event: Array<ApiFile>) {
         if (event.length == 1) {
             this.site.physical_path = event[0].physical_path;
         }

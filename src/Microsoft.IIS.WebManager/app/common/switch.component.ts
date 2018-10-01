@@ -149,7 +149,7 @@ export class SwitchComponent {
         }
     }
 
-    private updateData(event) {
+    updateData(event) {
         if (!this.auto) {
             this.model = !event;
             this._checkbox.nativeElement.checked = this.model;
@@ -171,7 +171,7 @@ export class SwitchComponent {
         this.modelChanged.emit();
     }
 
-    private toBool(): boolean {
+    toBool(): boolean {
         if (this.model === undefined || this.model === null) {
             return false;
         }

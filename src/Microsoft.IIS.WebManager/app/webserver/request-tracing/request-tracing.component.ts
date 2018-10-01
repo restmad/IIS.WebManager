@@ -77,12 +77,12 @@ import { RequestTracing, RequestTracingRule, Trace, EventSeverity, Verbosity } f
 })
 export class RequestTracingComponent implements OnInit, OnDestroy {
     id: string;
+    requestTracing: RequestTracing;
     private _redirect: boolean;
     private _original: RequestTracing;
-    private requestTracing: RequestTracing;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: RequestTracingService,
+    constructor(public _service: RequestTracingService,
                 private _notificationService: NotificationService) {
     }
 

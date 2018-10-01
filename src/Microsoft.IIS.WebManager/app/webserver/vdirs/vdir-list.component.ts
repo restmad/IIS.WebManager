@@ -292,7 +292,7 @@ export class VdirListComponent implements OnInit {
     @Input() website: WebSite;
     @Input() webapp: WebApp;
 
-    private _vdirs: Array<any>;
+    _vdirs: Array<any>;
     private _new: Vdir;
     private _editing: Vdir = null;
     private _orderBy: string;
@@ -362,7 +362,7 @@ export class VdirListComponent implements OnInit {
         return vdir.webapp.path !== "/";
     }
 
-    private onCreate() {
+    onCreate() {
         if (this._new) {
             return;
         }
@@ -386,12 +386,12 @@ export class VdirListComponent implements OnInit {
         this._editing = this._new;
     }
 
-    private sort(field: string) {
+    sort(field: string) {
         this._orderByAsc = (field == this._orderBy) ? !this._orderByAsc : true;
         this._orderBy = field;
     }
 
-    private sortStyle(field: string): any {
+    sortStyle(field: string): any {
         if (this._orderBy == field) {
             return {
                 "orderby": true,

@@ -48,7 +48,7 @@ export class InboundRuleComponent implements OnChanges {
     @Input() public rule: InboundRule;
     @Output('delete') deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean = false;
+    _editing: boolean = false;
     private toFriendlyActionType: Function = ActionTypeHelper.toFriendlyActionType;
     private _original: InboundRule;
 

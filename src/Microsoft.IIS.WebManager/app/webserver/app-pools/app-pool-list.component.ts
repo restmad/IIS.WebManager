@@ -31,7 +31,7 @@ export class AppPoolListComponent implements OnInit, OnDestroy {
     @Input() lazy: boolean = false;
     @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
-    private _appPools: Array<ApplicationPool>;
+    _appPools: Array<ApplicationPool>;
     private _subs: Array<Subscription> = [];
 
     constructor(@Inject("AppPoolsService") private _service: AppPoolsService,

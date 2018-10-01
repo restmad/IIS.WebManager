@@ -38,7 +38,7 @@ import { WebSitesService } from '../websites/websites.service';
 })
 export class WebAppHeaderComponent {
     @Input() model: WebApp;
-    @ViewChild(Selector) private _selector: Selector;
+    @ViewChild(Selector) _selector: Selector;
 
     constructor( @Inject("WebAppsService") private _service: WebAppsService,
         @Inject("WebSitesService") private _siteService: WebSitesService,
@@ -55,7 +55,7 @@ export class WebAppHeaderComponent {
         this._selector.close();
     }
 
-    private get url() {
+    get url() {
         if (!this.model.website || this.model.website.bindings.length == 0) {
             return "";
         }

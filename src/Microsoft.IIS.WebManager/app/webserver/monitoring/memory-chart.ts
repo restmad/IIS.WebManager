@@ -41,10 +41,10 @@ export class MemoryChart implements OnDestroy {
 
     private _subscriptionId: number = null;
     private _length = 20;
-    private _snapshot: ServerSnapshot = null;
+    _snapshot: ServerSnapshot = null;
     private humanizeMemory = Humanizer.memory;
 
-    private _options: any = {
+    _options: any = {
         responsive: true,
         legend: {
             position: 'bottom'
@@ -82,15 +82,15 @@ export class MemoryChart implements OnDestroy {
         }
     }
 
-    private _colors: Array<any> = this.colors;
+    _colors: Array<any> = this.colors;
 
-    private _labels: Array<string> = [];
+    _labels: Array<string> = [];
     private _serverMemValues: Array<number> = [];
     private _systemMemValues: Array<number> = [];
 
     @ViewChild('chart') private _memChart: BaseChartDirective;
 
-    private _data: Array<any> = [
+    _data: Array<any> = [
         { data: this._serverMemValues, label: 'Web Server Usage' },
         { data: this._systemMemValues, label: 'Total Usage' }
     ];

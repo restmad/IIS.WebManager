@@ -86,8 +86,8 @@ export class RuleEditComponent implements OnInit {
     @Output() cancel: EventEmitter<any> = new EventEmitter<any>();
     @Output() save: EventEmitter<any> = new EventEmitter<any>();
 
-    private _target: string;
-    private _allVerbs: boolean;
+    _target: string;
+    _allVerbs: boolean;
     private _initializing: boolean;
     private _users: string = "";
     private _roles: string = "";
@@ -100,14 +100,14 @@ export class RuleEditComponent implements OnInit {
         this.setupTarget();
     }
 
-    private isValid() {
+    isValid() {
         return (this._target == "*") ||
             (this._target == "?") ||
             (this._target == "users" && this._users != null && this._users != "") ||
             (this._target == "roles" && this._roles != null && this._roles != "");
     }
 
-    private onOk() {
+    onOk() {
 
         switch (this._target) {
             case "*":
@@ -141,7 +141,7 @@ export class RuleEditComponent implements OnInit {
         this.save.emit(this.rule);
     }
 
-    private onDiscard() {
+    onDiscard() {
         this._users = null;
         this._roles = null;
         this.cancel.emit();

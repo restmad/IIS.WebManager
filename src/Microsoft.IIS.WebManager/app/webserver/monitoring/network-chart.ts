@@ -52,13 +52,13 @@ import { ServerSnapshot } from './server-snapshot';
 })
 export class NetworkChart implements OnDestroy {
 
+    _snapshot: ServerSnapshot = null;
     private _subscriptionId: number = null;
     private _length = 20;
-    private _snapshot: ServerSnapshot = null;
     private formatNumber = Humanizer.number;
     private formatMemory = Humanizer.memory;
 
-    private _options: any = {
+    _options: any = {
         responsive: true,
         legend: {
             position: 'bottom'
@@ -104,15 +104,15 @@ export class NetworkChart implements OnDestroy {
         }
     };
 
-    private _colors: Array<any> = MonitoringComponent.DefaultColors;
+    _colors: Array<any> = MonitoringComponent.DefaultColors;
 
     private _bytesSentSecValues: Array<number> = [];
     private _bytesRecvSecValues: Array<number> = [];
-    private _labels: Array<string> = [];
+    _labels: Array<string> = [];
 
     @ViewChild('chart') private _networkChart: BaseChartDirective;
 
-    private _data: Array<any> = [
+    _data: Array<any> = [
         { data: this._bytesSentSecValues, label: 'Bytes Sent / sec' },
         { data: this._bytesRecvSecValues, label: 'Bytes Recv /sec' }
     ];

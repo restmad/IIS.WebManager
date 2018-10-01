@@ -66,7 +66,7 @@ export class RedirectHeadersComponent implements OnInit {
     @Output() delete: any = new EventEmitter();
     @Output() save: any = new EventEmitter();
 
-    private _editing: number;
+    _editing: number;
 
     ngOnInit() {
         this._editing = -1;

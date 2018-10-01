@@ -59,10 +59,13 @@ export class RequestsChart implements OnDestroy {
 
     private _subscriptionId: number = null;
     private _length = 20;
-    private _snapshot: ServerSnapshot = null;
     private formatNumber = Humanizer.number;
+    private _rpsValues: Array<number> = [];
+    private _activeRequestsValues: Array<number> = [];
+    @ViewChild('chart') private _rpsChart: BaseChartDirective;
 
-    private _options: any = {
+    _snapshot: ServerSnapshot = null;
+    _options: any = {
         responsive: true,
         legend: {
             position: 'bottom'
@@ -100,20 +103,16 @@ export class RequestsChart implements OnDestroy {
         }
     };
 
-    private _colors: Array<any> = MonitoringComponent.DefaultColors;
 
-    private _rpsValues: Array<number> = [];
-    private _activeRequestsValues: Array<number> = [];
-    private _labels: Array<string> = [];
+    _colors: Array<any> = MonitoringComponent.DefaultColors;
+    _labels: Array<string> = [];
 
-    @ViewChild('chart') private _rpsChart: BaseChartDirective;
-
-    private _data: Array<any> = [
+    _data: Array<any> = [
         { data: this._rpsValues, label: 'Requests / sec' },
         { data: this._activeRequestsValues, label: 'Active Requests' }
     ];
 
-    constructor(private _svc: MonitoringService) {
+    constructor(public _svc: MonitoringService) {
 
         for (let i = 0; i < this._length; i++) {
             this._labels.push('');

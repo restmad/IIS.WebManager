@@ -42,12 +42,12 @@ import { NotificationService } from '../../notification/notification.service';
     `
 })
 export class WindowsAuthenticationComponent implements OnDestroy {
-    private _model: WindowsAuthentication;
+    _model: WindowsAuthentication;
     private _locked: boolean;
     private _original: WindowsAuthentication;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: AuthenticationService,
+    constructor(public _service: AuthenticationService,
                 private _notificationService: NotificationService) {
         this._subscriptions.push(this._service.windowsAuth.subscribe(auth => {
             this.setFeature(auth);

@@ -49,7 +49,7 @@ export class OutboundRuleComponent implements OnChanges {
     @Input() public rule: OutboundRule;
     @Output('delete') deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean = false;
+    _editing: boolean = false;
     private toFriendlyMatchType: Function = OutboundMatchTypeHelper.display;
     private _original: OutboundRule;
 

@@ -54,7 +54,7 @@ export class WebServerComponent {
     webServer: WebServer;
     modules: Array<any> = [];
 
-    constructor( @Inject('WebServerService') private _service: WebServerService,
+    constructor( @Inject('WebServerService') public _service: WebServerService,
         private _http: HttpClient,
         private _options: OptionsService,
         private _route: ActivatedRoute) {

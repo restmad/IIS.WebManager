@@ -67,7 +67,7 @@ export class DirectoryBrowsingComponent implements OnInit, OnDestroy {
     private _error: any;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: DirectoryBrowsingService,
+    constructor(public _service: DirectoryBrowsingService,
                 private _notificationService: NotificationService) {
     }
 

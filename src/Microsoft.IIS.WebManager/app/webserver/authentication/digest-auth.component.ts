@@ -35,12 +35,12 @@ import { NotificationService } from '../../notification/notification.service';
     `
 })
 export class DigestAuthenticationComponent implements OnDestroy {
-    private _model: DigestAuthentication;
+    _model: DigestAuthentication;
     private _locked: boolean;
     private _original: DigestAuthentication;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: AuthenticationService,
+    constructor(public _service: AuthenticationService,
                 private _notificationService: NotificationService) {
         this._subscriptions.push(this._service.digestAuth.subscribe(auth => {
             this.setFeature(auth);

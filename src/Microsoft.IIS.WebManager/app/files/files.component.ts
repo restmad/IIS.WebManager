@@ -20,7 +20,7 @@ import { FileExplorer } from './file-explorer';
     ]
 })
 export class FilesComponent implements OnInit, OnDestroy {
-    private _current: ApiFile;
+    _current: ApiFile;
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(FileExplorer) private _list: FileExplorer;
 
@@ -53,7 +53,7 @@ export class FilesComponent implements OnInit, OnDestroy {
         }
     }
 
-    private isDir(f: ApiFile): boolean {
+    isDir(f: ApiFile): boolean {
         return ApiFile.isDir(f);
     }
 }

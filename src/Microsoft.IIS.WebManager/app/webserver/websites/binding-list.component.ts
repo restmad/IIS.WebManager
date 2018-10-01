@@ -342,7 +342,7 @@ export class BindingItem implements OnInit, OnChanges {
         this.onModelChanged();
     }
 
-    private isValid() {
+    isValid() {
         let b = this.model;
         if (!b.protocol) {
             return false;
@@ -373,7 +373,7 @@ export class BindingItem implements OnInit, OnChanges {
         }
     }
 
-    private allowed(action: string): boolean {
+    allowed(action: string): boolean {
         return this.allow.indexOf(action) >= 0;
     }
 
@@ -452,7 +452,7 @@ export class BindingList {
     @ViewChildren("item") _items: QueryList<BindingItem>;
 
     private _original: Array<Binding>;
-    private _editing: number = -1;
+    _editing: number = -1;
 
     ngOnInit() {
         this.reset();
@@ -516,7 +516,7 @@ export class BindingList {
         this.onModelChanged();
     }
 
-    private allow(i: number): string {
+    allow(i: number): string {
         let actions: string = "save,cancel,";
 
         if (this.model.length > 1 && (i == this._editing || this._editing < 0)) {

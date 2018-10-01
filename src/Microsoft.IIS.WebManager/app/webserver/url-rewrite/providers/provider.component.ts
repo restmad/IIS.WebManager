@@ -39,7 +39,7 @@ export class ProviderComponent implements OnChanges {
     @Input() public provider: Provider;
     @Output('delete') deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean = false;
+    _editing: boolean = false;
     private _original: Provider;
 
     constructor(private _service: UrlRewriteService, private _notificationService: NotificationService) {

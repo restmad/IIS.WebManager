@@ -31,8 +31,8 @@ import { Location } from './location';
 })
 export class LocationEditComponent implements OnInit {
 
-    private _read: boolean;
-    private _write: boolean;
+    _read: boolean;
+    _write: boolean;
 
     @Input() public model: Location;
 
@@ -47,7 +47,7 @@ export class LocationEditComponent implements OnInit {
         this._write = !!(this.model.claims && this.model.claims.find(c => c == "write"));
     }
 
-    private onOk() {
+    onOk() {
 
         if (this.model.alias) {
 

@@ -26,6 +26,6 @@ import { OptionsService } from '../main/options.service';
 })
 export class SettingsComponent {
 
-    constructor(private _options: OptionsService) {
+    constructor(public _options: OptionsService) {
     }
 }

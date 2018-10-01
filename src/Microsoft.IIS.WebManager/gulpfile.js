@@ -123,6 +123,6 @@ gulp.task('serve', (cb) => {
 });
 
 gulp.task('build', (cb) => {
-    // skipping lint, inline
+    // skipping lint, 
     runSequence('clean', 'generate', ['compile', 'copy'], 'bundle', cb);
 });

@@ -57,15 +57,15 @@ export class TooltipComponent implements OnDestroy, AfterViewInit {
     private _bottom: number = 16;
     private _padding: 20;
 
-    private _heightStyle: string = "initial";
-    private _widthStyle: string = "initial";
-    private _leftStyle: string = this._left + 'px';
-    private _bottomStyle: string = this._bottom + 'px';
-
     private _timer = null;
-    private _visible: boolean = false;
     private _hideDelay: number = 150; //ms
     private _subscriptions: Array<Subscription> = [];
+
+    _visible: boolean = false;
+    _heightStyle: string = "initial";
+    _widthStyle: string = "initial";
+    _leftStyle: string = this._left + 'px';
+    _bottomStyle: string = this._bottom + 'px';
 
     @ViewChild('helpContent')
     private _helpContent: ElementRef;
@@ -84,7 +84,7 @@ export class TooltipComponent implements OnDestroy, AfterViewInit {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private onMouseOver() {
+    onMouseOver() {
         if (this._timer) {
             window.clearTimeout(this._timer);
         }
@@ -92,7 +92,7 @@ export class TooltipComponent implements OnDestroy, AfterViewInit {
         this._visible = true;
     }
 
-    private onMouseLeave() {
+    onMouseLeave() {
         this._timer = window.setTimeout(() => {
             this._visible = false;
         }, this._hideDelay);

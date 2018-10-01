@@ -45,9 +45,9 @@ export class HttpResponseHeadersComponent implements OnInit {
     originalCustomHeaders: Array<CustomHeader>;
     redirectHeaders: Array<RedirectHeader>;
     originalRedirectHeaders: Array<RedirectHeader>;
+    _error: any;
 
     private _original: HttpResponseHeaders;
-    private _error: any;
     private _locked: boolean;
 
     constructor(private _service: HttpResponseHeadersService,

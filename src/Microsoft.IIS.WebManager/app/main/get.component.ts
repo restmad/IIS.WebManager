@@ -86,6 +86,7 @@ import { SETTINGS } from '../main/settings'
     `]
 })
 export class GetComponent implements OnDestroy {
+    _inProgress: boolean;
     private DOWNLOAD_URL: string = SETTINGS.api_download_url;
     private SETUP_VERSION: string = SETTINGS.api_setup_version;
     private static STATUS_MSG: string[] = [
@@ -95,8 +96,6 @@ export class GetComponent implements OnDestroy {
         'It takes a bit longer',
         'Trying to establish connection'
     ];
-
-    private _inProgress: boolean;
     private _pingTimeout: NodeJS.Timer;
     private _client: HttpConnection;
     private _status: string;
@@ -127,7 +126,7 @@ export class GetComponent implements OnDestroy {
         this.ping();
     }
 
-    private skip() {
+    skip() {
         if (this._activeConnection) {
             this._router.navigate(["/"]);
             return;

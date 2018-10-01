@@ -124,7 +124,7 @@ export class WebSiteGeneralComponent {
         }
     }
 
-    private onSelectPath(event: Array<ApiFile>) {
+    onSelectPath(event: Array<ApiFile>) {
         if (event.length == 1) {
             this.site.physical_path = event[0].physical_path;
             this.onModelChanged();

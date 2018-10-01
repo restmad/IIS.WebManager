@@ -33,9 +33,9 @@ export class ModulesComponent implements OnInit {
     id: string;
     modules: Modules;
     isServerSetting: boolean;
+    _error: any;
 
     private _original: Modules;
-    private _error: any;
     private _locked: boolean;
     private activeModules: Array<LocalModule>;
     private globalModules: Array<GlobalModule>;

@@ -70,10 +70,10 @@ import { DiffUtil } from '../../utils/diff';
 export class AppPoolDetailsComponent {
     @Input() public model: ApplicationPool;
 
-    @ViewChild(Selector) private _selector: Selector;
+    @ViewChild(Selector) _selector: Selector;
     private _original: ApplicationPool;
 
-    constructor(@Optional() @Inject("AppPoolsService") private _svc: AppPoolsService) {
+    constructor(@Optional() @Inject("AppPoolsService") public _svc: AppPoolsService) {
     }
 
     public ngOnInit() {
@@ -101,25 +101,25 @@ export class AppPoolDetailsComponent {
         this._original = JSON.parse(JSON.stringify(p));
     }
 
-    private openSelector() {
+    openSelector() {
         this._selector.toggle();
     }
 
-    private get started(): boolean {
+    get started(): boolean {
         return this.model.status == 'started';
     }
 
-    onStart(e: Event) {
+    onStart() {
         this._selector.close();
         this._svc.start(this.model);
     }
 
-    onStop(e: Event) {
+    onStop() {
         this._selector.close();
         this._svc.stop(this.model);
     }
 
-    onRecycle(e: Event) {
+    onRecycle() {
         this._selector.close();
         this._svc.recycle(this.model);
     }

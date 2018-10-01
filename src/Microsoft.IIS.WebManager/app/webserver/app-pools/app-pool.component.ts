@@ -42,8 +42,8 @@ import {AppPoolsService} from './app-pools.service';
 })
 export class AppPoolComponent implements OnInit {
     private id: string;
-    private pool: ApplicationPool;
-    private notFound: boolean;
+    pool: ApplicationPool;
+    notFound: boolean;
     private modules: Array<any> = [];
     private _original: ApplicationPool;
 

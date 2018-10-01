@@ -14,7 +14,7 @@ import { WebSite } from '../websites/site';
     `
 })
 export class WebFilesComponent implements OnInit, OnDestroy {
-    private _current: WebFile;
+    _current: WebFile;
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(WebFileListComponent) private _list: WebFileListComponent;
     
@@ -32,7 +32,7 @@ export class WebFilesComponent implements OnInit, OnDestroy {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private isDir(file: WebFile) {
+    isDir(file: WebFile) {
         return WebFile.isDir(file);
     }
 }

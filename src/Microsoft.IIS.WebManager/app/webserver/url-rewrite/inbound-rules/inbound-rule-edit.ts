@@ -39,16 +39,16 @@ export class InboundRuleEditComponent {
     @Output() cancel: EventEmitter<any> = new EventEmitter<any>();
     @Output() save: EventEmitter<any> = new EventEmitter<any>();
 
-    private isValid(): boolean {
+    isValid(): boolean {
         return !!this.rule.name && !!this.rule.pattern &&
             (this.rule.action.type != ActionType.CustomResponse || (<any>this.rule.action.status_code !== "" && <any>this.rule.action.sub_status_code !== ""));
     }
 
-    private onDiscard() {
+    onDiscard() {
         this.cancel.emit();
     }
 
-    private onOk() {
+    onOk() {
         this.save.emit(this.rule);
     }
 }

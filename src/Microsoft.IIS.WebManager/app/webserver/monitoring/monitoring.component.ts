@@ -52,7 +52,7 @@ import { MonitoringService } from './monitoring.service';
 })
 export class MonitoringComponent implements OnDestroy {
 
-    constructor(private _svc: MonitoringService) {
+    constructor(public _svc: MonitoringService) {
         this.activate();
     }
 

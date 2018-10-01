@@ -23,7 +23,7 @@ import 'rxjs/add/operator/first';
     `
 })
 export class NotificationIndicator {
-    private _notifications = [];
+    _notifications = [];
 
     constructor(private _service: NotificationService) {
         this._service.notifications.subscribe(notifications => {

@@ -173,7 +173,7 @@ export class VirtualListComponent implements OnDestroy, OnChanges, AfterContentI
         return top > 0 ? 0 : -top;
     }
 
-    private get preHeight(): number {
+    get preHeight(): number {
         if (this._scrollTop == 0) {
             return 0;
         }
@@ -183,7 +183,7 @@ export class VirtualListComponent implements OnDestroy, OnChanges, AfterContentI
         return val < 0 ? 0 : val;
     }
 
-    private get postHeight(): number {
+    get postHeight(): number {
         let val = this._totalHeight - this._scrollTop - this._listSize;
         return val < 0 ? 0 : val;
     }

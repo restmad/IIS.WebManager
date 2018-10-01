@@ -66,7 +66,7 @@ export class IpRestrictionsComponent implements OnInit, OnDestroy {
     private _locked: boolean;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: IpRestrictionsService,
+    constructor(public _service: IpRestrictionsService,
                 private _notificationService: NotificationService) {
     }
 

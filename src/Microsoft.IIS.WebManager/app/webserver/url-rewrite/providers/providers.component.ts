@@ -10,7 +10,7 @@ import { ProvidersSection, Provider, ProviderSetting } from '../url-rewrite';
     selector: 'providers',
     template: `
         <error [error]="_service.providersError"></error>
-        <div *ngIf="!_service.providersError && _settings">
+        <div *ngIf="!_service.providersError && _settings != null">
             <override-mode class="pull-right"
                 [metadata]="_settings.metadata"
                 [scope]="_settings.scope"
@@ -41,13 +41,13 @@ import { ProvidersSection, Provider, ProviderSetting } from '../url-rewrite';
     `
 })
 export class ProvidersComponent implements OnDestroy {
-    private _settings: ProvidersSection;
+    _settings: ProvidersSection;
     private _newProvider: Provider;
     private _providers: Array<Provider> = [];
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(Selector) private _newSelector: Selector;
 
-    constructor(private _service: UrlRewriteService) {
+    constructor(public _service: UrlRewriteService) {
         this._subscriptions.push(this._service.providersSettings.subscribe(settings => this._settings = settings));
         this._subscriptions.push(this._service.providers.subscribe(r => {
             this._providers = r;

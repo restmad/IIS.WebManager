@@ -41,7 +41,7 @@ export class RewriteMapComponent implements OnChanges {
     @Input() public map: RewriteMap;
     @Output('delete') deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean = false;
+    _editing: boolean = false;
     private _original: RewriteMap;
 
     constructor(private _service: UrlRewriteService, private _notificationService: NotificationService) {

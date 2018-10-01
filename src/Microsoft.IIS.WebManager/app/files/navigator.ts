@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -8,15 +8,14 @@ import { LocationHash } from '../common/location-hash';
 import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
-@Injectable()
 export class Navigator implements IDisposable {
     private _hashWatcher: LocationHash;
     private _path: BehaviorSubject<string>;
 
     constructor(private _route: ActivatedRoute,
                 private _location: Location,
-                private _useHash: boolean,
-                defaultPath: string = null) {
+                private _useHash: boolean = false,
+                private defaultPath: string = null) {
 
         this._path = new BehaviorSubject<string>(defaultPath || "");
 

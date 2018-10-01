@@ -126,13 +126,14 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/src/providers/angulart
     `]
 })
 export class HeaderComponent implements OnDestroy {
+    _inProgress: boolean;
+
     private _subs = [];
-    private _inProgress: boolean;
     private _timeout: NodeJS.Timer;
     private _window: Window = window;
 
     constructor(loadingSvc: LoadingService,
-        private _options: OptionsService,
+        public _options: OptionsService,
         @Optional() private _angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
         this._subs.push(loadingSvc.active.subscribe(active => {
             if (active) {

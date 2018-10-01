@@ -112,8 +112,8 @@ export class RestrictionRuleComponent implements OnChanges, OnInit {
 
     @ViewChildren(NgModel) private _validators: QueryList<NgModel>;
 
+    _editing: boolean = false;
     private _editable: boolean = true;
-    private _editing: boolean = false;
     private _original: RestrictionRule;
 
     constructor(private _service: IpRestrictionsService) {
@@ -250,8 +250,8 @@ export class RestrictionRuleComponent implements OnChanges, OnInit {
 export class RestrictionRulesComponent implements OnInit, OnDestroy {
     rules: Array<RestrictionRule>;
 
-    private _editing: boolean;
-    private _newRule: RestrictionRule;
+    _editing: boolean;
+    _newRule: RestrictionRule;
     private _subscriptions: Array<Subscription> = [];
 
     @Input() ipRestrictions: IpRestrictions;

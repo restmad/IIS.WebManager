@@ -91,7 +91,7 @@ export class InboundRuleVariableComponent {
     @Input() public variable: ServerVariableAssignment;
     @Output('delete') deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean;
+    _editing: boolean;
 
     private edit() {
         this._editing = true;

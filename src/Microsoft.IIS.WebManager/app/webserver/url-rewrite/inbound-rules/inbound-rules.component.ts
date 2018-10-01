@@ -10,7 +10,7 @@ import { InboundSection, InboundRule, PatternSyntax, ActionType, ConditionMatchC
     selector: 'inbound-rules',
     template: `
         <error [error]="_service.inboundError"></error>
-        <div *ngIf="!_service.inboundError && _settings">
+        <div *ngIf="!_service.inboundError && _settings != null">
             <override-mode class="pull-right"
                 [metadata]="_settings.metadata"
                 [scope]="_settings.scope"
@@ -53,13 +53,13 @@ import { InboundSection, InboundRule, PatternSyntax, ActionType, ConditionMatchC
     `]
 })
 export class InboundRulesComponent implements OnDestroy {
-    private _settings: InboundSection;
+    _settings: InboundSection;
     private _newRule: InboundRule;
     private _rules: Array<InboundRule> = [];
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(Selector) private _newRuleSelector: Selector;
 
-    constructor(private _service: UrlRewriteService) {
+    constructor(public _service: UrlRewriteService) {
         this._subscriptions.push(this._service.inboundSettings.subscribe(settings => this._settings = settings));
         this._subscriptions.push(this._service.inboundRules.subscribe(r => {
             this._rules = r;

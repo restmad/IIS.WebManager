@@ -34,7 +34,7 @@ export class WebAppListComponent implements OnInit {
     @Input() website: WebSite;
     @Input() lazy: boolean;
 
-    private _webapps: Array<WebApp>;
+    _webapps: Array<WebApp>;
 
     constructor(@Inject("WebAppsService") private _service: WebAppsService) {
     }
@@ -83,7 +83,7 @@ export class WebAppListComponent implements OnInit {
         }
     }
 
-    private fields(): string {
+    fields(): string {
         let fields: string = "path,site,app-pool";
 
         if (this.website) {

@@ -40,12 +40,12 @@ import { Authorization, AuthRule } from './authorization'
 })
 export class AuthorizationComponent implements OnInit, OnDestroy {
     id: string;
-    private _authorization: Authorization;
+    _authorization: Authorization;
     private _locked: boolean;
     private _original: Authorization;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: AuthorizationService,
+    constructor(public _service: AuthorizationService,
                 private _notificationService: NotificationService) {
         this._subscriptions.push(this._service.authorization.subscribe(settings => this.setFeature(settings)));
     }

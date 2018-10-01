@@ -54,10 +54,10 @@ import { FilesService } from './files.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UploadComponent implements OnDestroy {
-    private _numUploading: number = 0;
-    private _uploadProgress: number = 0;
-    private _bytesRemaining: number = 0;
+    _numUploading: number = 0;
+    _uploadProgress: number = 0;
 
+    private _bytesRemaining: number = 0;
     private _finished: Array<Progress> = [];
     private _subscriptions: Array<Subscription> = [];
     private _avg: SlidingAverage = new SlidingAverage();
@@ -102,7 +102,7 @@ export class UploadComponent implements OnDestroy {
         }))
     }
 
-    private getRemaining(): string {
+    getRemaining(): string {
         let kbs = this._bytesRemaining / 1024;
 
         if (kbs <= 1024) {
@@ -112,7 +112,7 @@ export class UploadComponent implements OnDestroy {
         return Math.ceil(kbs / 1024) + 'MB';
     }
 
-    private getSpeed(): string {
+    getSpeed(): string {
         let kbs = (this._avg ? this._avg.current : 0);
 
         if (kbs <= 1024) {
@@ -122,7 +122,7 @@ export class UploadComponent implements OnDestroy {
         return Math.ceil(kbs / 1024) + ' MB/s';
     }
 
-    private getTimeRemaining(): string {
+    getTimeRemaining(): string {
         const calculating = "calculating...";
         if (!this._avg || this._avg.current == 0) {
             return calculating;
@@ -140,11 +140,11 @@ export class UploadComponent implements OnDestroy {
         return Math.ceil(secondsRemaining) + 's';
     }
 
-    private get uploadProgress(): number {
+    get uploadProgress(): number {
         return this._uploadProgress > 99 ? 99 : Math.ceil(this._uploadProgress);
     }
 
-    private get numFinished(): number {
+    get numFinished(): number {
         return this._finished.length;
     }
 

@@ -36,9 +36,9 @@ import { WebSite } from '../websites/site';
     `]
 })
 export class WebFileExplorer implements OnDestroy {
-    private _current: WebFile;
+    @ViewChild(WebFileListComponent) _list: WebFileListComponent;
+    _current: WebFile;
     private _subscriptions: Array<Subscription> = [];
-    @ViewChild(WebFileListComponent) private _list: WebFileListComponent;
 
     constructor(private _svc: WebFilesService) {
         this._subscriptions.push(_svc.current.filter(dir => !!dir).subscribe(dir => this._current = dir));
@@ -48,27 +48,27 @@ export class WebFileExplorer implements OnDestroy {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private refresh() {
+    refresh() {
         this._list.refresh();
     }
 
-    private createDirectory() {
+    createDirectory() {
         this._list.createDirectory();
     }
 
-    private createFile() {
+    createFile() {
         this._list.createFile();
     }
 
-    private deleteFiles(files: Array<WebFile>) {
+    deleteFiles(files: Array<WebFile>) {
         this._list.deleteFiles(files);
     }
 
-    private upload(files: Array<File>) {
+    upload(files: Array<File>) {
         this._svc.upload(files, this._current);
     }
 
-    private isDir(file: WebFile) {
+    isDir(file: WebFile) {
         return WebFile.isDir(file);
     }
 }

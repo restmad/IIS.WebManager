@@ -77,7 +77,7 @@ export class NewModuleComponent implements OnInit {
         }
     }
 
-    private isValid() {
+    isValid() {
         return this.isValidManagedModule() || this.isValidNativeModule();
     }
 

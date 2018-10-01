@@ -9,7 +9,7 @@ import { AllowedServerVariablesSection } from '../url-rewrite';
     selector: 'server-variables',
     template: `
         <error [error]="_service.serverVariablesError"></error>
-        <div *ngIf="!_service.serverVariablesError && _settings">
+        <div *ngIf="!_service.serverVariablesError && _settings != null">
             <override-mode class="pull-right"
                 [metadata]="_settings.metadata"
                 [scope]="_settings.scope"
@@ -24,10 +24,10 @@ import { AllowedServerVariablesSection } from '../url-rewrite';
     `
 })
 export class ServerVariablesComponent implements OnDestroy {
-    private _settings: AllowedServerVariablesSection;
+    _settings: AllowedServerVariablesSection;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: UrlRewriteService) {
+    constructor(public _service: UrlRewriteService) {
         this._subscriptions.push(this._service.serverVariablesSettings.subscribe(settings => this._settings = settings));
     }
 

@@ -16,7 +16,7 @@ export class Drop {
     selector: 'navigation',
     template: `
         <div>
-            <button class="no-border pull-left color-active" title="Go Up" (click)="onClickUp($event)"><i class="fa fa-level-up"></i></button>
+            <button class="no-border pull-left color-active" title="Go Up" (click)="onClickUp()"><i class="fa fa-level-up"></i></button>
             <div class="fill">
                 <ul *ngIf="_crumbs.length > 0" [hidden]="_typing" class="nav border-color" (click)="onClickAddress($event)">
                     <li *ngFor="let item of _crumbs; let i = index;" 
@@ -101,10 +101,10 @@ export class Drop {
     }
 })
 export class NavigationComponent implements OnInit, OnDestroy {
+    _crumbs: Array<string> = []
     private _path = "";
     private _selected: number;
     private _typing: boolean = false;
-    private _crumbs: Array<string> = []
     private _subscriptions: Array<Subscription> = [];
     @ViewChild('addressBar') private _addressBar: ElementRef;
 
@@ -173,7 +173,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         }, 1);
     }
 
-    private onClickUp() {
+    onClickUp() {
         let curPath = this._path;
 
         if (!curPath) {

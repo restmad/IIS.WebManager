@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
-import { Status } from '../../common/status';
 
 import { WebSite } from './site';
 import { WebSitesService } from './websites.service';
@@ -44,11 +42,11 @@ export class WebSiteListComponent implements OnInit {
     @Input() appPool: ApplicationPool;
     @Input() lazy: boolean;
 
-    private _sites: Array<WebSite>;
+    _sites: Array<WebSite>;
     private _subs: Array<Subscription> = [];
 
 
-    constructor(@Inject("WebSitesService") private _service: WebSitesService) {
+    constructor(@Inject("WebSitesService") public _service: WebSitesService) {
     }
 
     ngOnInit() {

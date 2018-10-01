@@ -46,7 +46,7 @@ import { UrlRewriteService } from './service/url-rewrite.service';
 export class UrlRewriteComponent implements OnInit {
     public id: string;
 
-    constructor(private _service: UrlRewriteService,
+    constructor(public _service: UrlRewriteService,
         private _notificationService: NotificationService) {
     }
 

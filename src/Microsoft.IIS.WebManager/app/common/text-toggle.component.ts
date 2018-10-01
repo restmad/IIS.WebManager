@@ -53,7 +53,7 @@ export class TextToggleComponent {
 
     @ViewChild('checkbox') private _checkbox: ElementRef;
 
-    private updateData(event) {
+    updateData(event) {
         this.model = event;
 
         var emitValue = event
@@ -68,7 +68,7 @@ export class TextToggleComponent {
         this.modelChanged.emit();
     }
 
-    private toBool(): boolean {
+    toBool(): boolean {
         if (this.model === undefined || this.model === null) {
             return false;
         }

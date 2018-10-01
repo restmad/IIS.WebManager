@@ -89,7 +89,7 @@ export class RequestFilteringComponent implements OnInit, OnDestroy {
     private _locked: boolean;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: RequestFilteringService,
+    constructor(public _service: RequestFilteringService,
                 private _notificationService: NotificationService) {
     }
 

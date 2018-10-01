@@ -90,8 +90,8 @@ export class FileComponent {
     @Input() model: ApiFile;
     @Output() modelChanged: EventEmitter<any> = new EventEmitter();
     private _date = null;
-    private _location = null;
-    private _editing = false;
+    _location = null;
+    _editing = false;
 
     constructor(@Inject("FilesService") private _svc: FilesService,
                 private _nav: FileNavService,

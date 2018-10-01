@@ -64,7 +64,7 @@ export class ModuleListComponent implements OnInit {
     @ViewChildren(ModuleComponent)
     moduleComponents: QueryList<ModuleComponent>;
     
-    private _creating: boolean;
+    _creating: boolean;
     private _nativeActions = "edit";
 
     ngOnInit() {

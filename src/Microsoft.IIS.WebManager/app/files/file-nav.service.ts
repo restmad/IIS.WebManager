@@ -116,7 +116,7 @@ export class FileNavService implements IDisposable {
         //
         // Navigation
         this._defaultPath = defaultPath;
-        this._nav = new Navigator(this._route, this._location, useHash, defaultPath)
+        this._nav = new Navigator(this._route, this._location, useHash, defaultPath);
         this._subscriptions.push(this._nav.path.startWith(null).pairwise().subscribe((pair: [string, string]) => {
             let previous = pair[0];
             let hash = pair[1];

@@ -39,17 +39,17 @@ export class OutboundRuleEditComponent {
     constructor(private _svc: UrlRewriteService) {
     }
 
-    private isValid(): boolean {
+    isValid(): boolean {
         return !!this.rule.name &&
             !!this.rule.pattern &&
             (this.rule.match_type != OutboundMatchType.ServerVariable || !!this.rule.server_variable);
     }
 
-    private onDiscard() {
+    onDiscard() {
         this.cancel.emit();
     }
 
-    private onOk() {
+    onOk() {
         this.save.emit(this.rule);
     }
 }

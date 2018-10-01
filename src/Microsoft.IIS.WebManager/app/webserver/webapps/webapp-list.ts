@@ -158,7 +158,7 @@ export class WebAppItem {
         return this.actions.indexOf(action) >= 0;
     }
 
-    private field(f: string): boolean {
+    field(f: string): boolean {
         return this.fields.indexOf(f) >= 0;
     }
 
@@ -204,8 +204,8 @@ export class WebAppList {
     @Input() actions: string = "edit,browse,delete";
     @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
-    private _orderBy: string;
-    private _orderByAsc: boolean;
+    _orderBy: string;
+    _orderByAsc: boolean;
 
 
     constructor(private _router: Router) {
@@ -230,16 +230,16 @@ export class WebAppList {
         this._router.navigate(['webserver', 'webapps', app.id]);
     }
 
-    private field(f: string): boolean {
+    field(f: string): boolean {
         return this.fields.indexOf(f) >= 0;
     }
 
-    private sort(field: string) {
+    sort(field: string) {
         this._orderByAsc = (field == this._orderBy) ? !this._orderByAsc : true;
         this._orderBy = field;
     }
 
-    private css(field: string): any {
+    css(field: string): any {
         if (this._orderBy == field) {
             return {
                 "orderby": true,

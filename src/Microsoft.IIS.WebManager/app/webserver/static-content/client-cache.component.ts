@@ -47,7 +47,7 @@ export class ClientCacheComponent implements OnInit {
 
     @Output() modelChange: any = new EventEmitter();
 
-    private _useCustom: boolean;
+    _useCustom: boolean;
     private _cacheCustom: string;
 
     public ngOnInit() {
@@ -58,7 +58,7 @@ export class ClientCacheComponent implements OnInit {
         this.modelChange.emit(this.model);
     }
 
-    private onCustom() {
+    onCustom() {
         if (!this._useCustom) {
             this._cacheCustom = this.model.control_custom;
             this.model.control_custom = "";

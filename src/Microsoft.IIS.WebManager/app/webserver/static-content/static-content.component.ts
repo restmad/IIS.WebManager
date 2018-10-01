@@ -36,7 +36,7 @@ export class StaticContentComponent implements OnInit, OnDestroy {
     private _locked: boolean;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: StaticContentService,
+    constructor(public _service: StaticContentService,
                 private _notificationService: NotificationService) {
     }
 

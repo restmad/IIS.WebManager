@@ -28,7 +28,7 @@ export class FileSelector {
 
     private _selected: Array<File>;
 
-    private onFileChange(evt: any) {
+    onFileChange(evt: any) {
         let files: Array<File> = evt.target.files;
         this._selected = files;
 

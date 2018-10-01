@@ -103,7 +103,8 @@ import { FileNavService } from './file-nav.service';
     `]
 })
 export class FileListComponent implements OnInit, OnDestroy {
-    private _current: ApiFile;
+    _current: ApiFile;
+    _selected: Array<ApiFile> = [];
     private _filter: string = "";
     private _newDir: ApiFile = null;
     private _newLocation: Location = null;
@@ -114,7 +115,6 @@ export class FileListComponent implements OnInit, OnDestroy {
     @ViewChild('dragInfo') private _dragInfo: ElementRef;
 
     private _range: Range = new Range(0, 0);
-    private _selected: Array<ApiFile> = [];
     private _items: Array<ApiFile> = [];
     private _view: Array<ApiFile> = [];
 

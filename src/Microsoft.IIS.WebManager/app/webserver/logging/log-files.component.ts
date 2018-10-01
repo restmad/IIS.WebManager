@@ -63,16 +63,17 @@ import { LoggingService } from './logging.service';
     `]
 })
 export class LogFilesComponent implements OnInit, OnDestroy {
-    private _orderBy: OrderBy = new OrderBy();
+    _orderBy: OrderBy = new OrderBy();
+    _logs: Array<ApiFile>;
+    _selected: Array<ApiFile> = [];
+
     private _sortPipe: SortPipe = new SortPipe();
     private _subscriptions: Array<Subscription> = [];
 
     private _range: Range = new Range(0, 0);
-    private _logs: Array<ApiFile>;
     private _view: Array<ApiFile> = [];
-    private _selected: Array<ApiFile> = [];
 
-    constructor(private _service: LoggingService) {
+    constructor(public _service: LoggingService) {
         this._subscriptions.push(this._service.logs.subscribe(t => {
             this._logs = t;
             this.doSort();
@@ -90,12 +91,12 @@ export class LogFilesComponent implements OnInit, OnDestroy {
         }
     }
 
-    private onRefresh() {
+    onRefresh() {
         this._logs = [];
         this._service.loadLogs();
     }
 
-    private onDelete() {
+    onDelete() {
         let msg = this._selected.length == 1 ? "Are you sure you want to delete '" + this._selected[0].name + "'?" :
             "Are you sure you want to delete " + this._selected.length + " items?";
 
@@ -104,7 +105,7 @@ export class LogFilesComponent implements OnInit, OnDestroy {
         }
     }
 
-    private sort(field: string) {
+    sort(field: string) {
         this._orderBy.sort(field, false);
         this.doSort();
     }

@@ -48,11 +48,12 @@ import { DynamicComponent } from '../common/dynamic.component';
     `
 })
 export class NotificationComponent implements OnDestroy {
-    private _active: boolean;
+    _active: boolean;
+    _warning: Notification;
+    _notifications: Array<Notification> = [];
+
     private _warningTimer: NodeJS.Timer;
-    private _warning: Notification;
     private _subscriptions: Subscription[] = [];
-    private _notifications: Array<Notification> = [];
     private _warningTimeout: number = 1 * 1000; // ms
     private _showNext: boolean = true;
 

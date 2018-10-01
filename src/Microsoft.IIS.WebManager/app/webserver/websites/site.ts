@@ -40,4 +40,5 @@ export class Binding {
     protocol: string; // required
     binding_information: boolean;
     certificate: Certificate;
+    isNew: boolean;
 }

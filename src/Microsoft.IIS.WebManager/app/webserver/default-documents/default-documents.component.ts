@@ -43,11 +43,11 @@ import { NotificationService } from '../../notification/notification.service';
 })
 export class DefaultDocumentsComponent implements OnInit, OnDestroy {
     id: string;
-    private _defDoc: DefaultDocument;
+    _defDoc: DefaultDocument;
     private _original: DefaultDocument;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: DefaultDocumentsService,
+    constructor(public _service: DefaultDocumentsService,
                 private _notificationService: NotificationService) {
     }
 

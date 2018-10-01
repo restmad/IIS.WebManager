@@ -76,7 +76,7 @@ export class NewWebAppComponent {
     @ViewChild('appPools') appPools: AppPoolListComponent;
 
     model: WebApp;
-    private _customPool: boolean = false;
+    _customPool: boolean = false;
 
     constructor(@Inject("WebAppsService") private _service: WebAppsService) {
     }
@@ -98,13 +98,13 @@ export class NewWebAppComponent {
         this.cancel.emit(null);
     }
 
-    private onNewAppPool(value: boolean) {
+    onNewAppPool(value: boolean) {
         if (!value) {
             this.model.application_pool = this.website.application_pool;
         }
     }
 
-    private IsValid(): boolean {
+    IsValid(): boolean {
         return !(!this.model.path || !this.model.physical_path);
     }
 
@@ -136,7 +136,7 @@ export class NewWebAppComponent {
         this.model.application_pool = pool;
     }
 
-    private onSelectPath(event: Array<ApiFile>) {
+    onSelectPath(event: Array<ApiFile>) {
         if (event.length == 1) {
             this.model.physical_path = event[0].physical_path;
         }

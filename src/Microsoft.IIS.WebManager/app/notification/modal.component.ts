@@ -89,11 +89,13 @@ import { NotificationService } from './notification.service';
     `]
 })
 export class ModalComponent implements OnDestroy {
+
     public message: string = "";
     public title: string = "";
 
+    _display: boolean = false;
+
     private _defaultTitle = "Confirm";
-    private _display: boolean = false;
     private _onCancel: () => void = null;
     private _onConfirm: () => void = null;
     private _subscriptions: Array<Subscription> = [];

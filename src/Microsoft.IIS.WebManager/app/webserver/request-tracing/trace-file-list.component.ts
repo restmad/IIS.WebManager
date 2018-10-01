@@ -78,15 +78,15 @@ import { RequestTracingService } from './request-tracing.service';
     `]
 })
 export class TraceFileListComponent implements OnInit, OnDestroy {
-    private _error: any;
-    private _orderBy: OrderBy = new OrderBy();
+    _error: any;
+    _orderBy: OrderBy = new OrderBy();
+    _traces: Array<TraceLog>;
+    _selected: Array<TraceLog> = [];
+
     private _sortPipe: SortPipe = new SortPipe();
     private _subscriptions: Array<Subscription> = [];
-
     private _range: Range = new Range(0, 0);
-    private _traces: Array<TraceLog>;
     private _view: Array<TraceLog> = [];
-    private _selected: Array<TraceLog> = [];
 
     constructor(private _service: RequestTracingService) {
         this._subscriptions.push(this._service.traces.subscribe(t => {
@@ -109,12 +109,12 @@ export class TraceFileListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private onRefresh() {
+    onRefresh() {
         this._traces = [];
         this._service.loadTraces();
     }
 
-    private onDelete() {
+    onDelete() {
         let msg = this._selected.length == 1 ? "Are you sure you want to delete '" + this._selected[0].file_info.name + "'?" :
             "Are you sure you want to delete " + this._selected.length + " items?";
 
@@ -123,7 +123,7 @@ export class TraceFileListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private sort(field: string) {
+    sort(field: string) {
         this._orderBy.sort(field, false);
         this.doSort();
     }

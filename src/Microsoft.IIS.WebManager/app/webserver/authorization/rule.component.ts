@@ -72,9 +72,9 @@ import { AuthorizationService } from './authorization.service';
 export class RuleComponent implements OnInit, OnChanges {
     @Input() rule: AuthRule;
     @Input() locked: boolean;
+    _editing: boolean;
 
     private _target: string;
-    private _editing: boolean;
     private _initializing: boolean;
     private _allVerbs: boolean;
     private _original: AuthRule;

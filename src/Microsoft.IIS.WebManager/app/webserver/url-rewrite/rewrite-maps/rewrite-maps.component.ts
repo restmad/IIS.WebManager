@@ -10,7 +10,7 @@ import { RewriteMapsSection, RewriteMap, RewriteMapping } from '../url-rewrite';
     selector: 'rewrite-maps',
     template: `
         <error [error]="_service.rewriteMapsError"></error>
-        <div *ngIf="!_service.rewriteMapsError && _settings">
+        <div *ngIf="!_service.rewriteMapsError && _settings != null">
             <override-mode class="pull-right"
                 [metadata]="_settings.metadata"
                 [scope]="_settings.scope"
@@ -41,13 +41,13 @@ import { RewriteMapsSection, RewriteMap, RewriteMapping } from '../url-rewrite';
     `
 })
 export class RewriteMapsComponent implements OnDestroy {
-    private _settings: RewriteMapsSection;
+    _settings: RewriteMapsSection;
     private _newRewriteMap: RewriteMap;
     private _rewriteMaps: Array<RewriteMap> = [];
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(Selector) private _newRewriteMapSelector: Selector;
 
-    constructor(private _service: UrlRewriteService) {
+    constructor(public _service: UrlRewriteService) {
         this._subscriptions.push(this._service.rewriteMapSettings.subscribe(settings => this._settings = settings));
         this._subscriptions.push(this._service.rewriteMaps.subscribe(r => {
             this._rewriteMaps = r;

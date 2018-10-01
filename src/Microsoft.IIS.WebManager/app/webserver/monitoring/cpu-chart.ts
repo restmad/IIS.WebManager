@@ -62,9 +62,9 @@ export class CpuChart implements OnDestroy {
 
     private _subscriptionId: number = null;
     private _length = 20;
-    private _snapshot: ServerSnapshot = null;
+    _snapshot: ServerSnapshot = null;
 
-    private _options: any = {
+    _options: any = {
         responsive: true,
         legend: {
             position: 'bottom'
@@ -96,16 +96,16 @@ export class CpuChart implements OnDestroy {
         }
     }
 
-    private _colors: Array<any> = this.colors
+    _colors: Array<any> = this.colors
 
-    private _labels: Array<string> = [];
+    _labels: Array<string> = [];
     private _serverCpuValues: Array<number> = [];
     private _systemCpuValues: Array<number> = [];
     private _avgCpu = 0;
 
     @ViewChild('chart') private _chart: BaseChartDirective;
 
-    private _data: Array<any> = [
+    _data: Array<any> = [
         { data: this._serverCpuValues, label: 'Web Server CPU %' },
         { data: this._systemCpuValues, label: 'Total CPU %' }
     ];

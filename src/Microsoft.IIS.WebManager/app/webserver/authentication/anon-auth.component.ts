@@ -30,12 +30,12 @@ import { AuthenticationService } from './authentication.service';
     `
 })
 export class AnonymousAuthenticationComponent implements OnDestroy {
-    private _model: AnonymousAuthentication;
+    _model: AnonymousAuthentication;
     private _locked: boolean;
     private _original: AnonymousAuthentication;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: AuthenticationService) {
+    constructor(public _service: AuthenticationService) {
         this._subscriptions.push(this._service.anonAuth.subscribe(auth => {
             this.setFeature(auth);
         }));

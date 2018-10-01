@@ -90,8 +90,8 @@ export class OverrideModeComponent {
     @Output()
     public revert: any = new EventEmitter();
 
-    private _focused: boolean = false;
-    private _entered: boolean = false;
+    _focused: boolean = false;
+    _entered: boolean = false;
     private _doubleClick: boolean = false;
 
     constructor(private _eRef: ElementRef) {

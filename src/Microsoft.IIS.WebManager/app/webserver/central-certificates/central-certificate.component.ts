@@ -74,7 +74,8 @@ import { CentralCertificateConfiguration } from './central-certificates';
 })
 export class CentralCertificateComponent implements OnInit, OnDestroy {
     id: string;
-    private _enabled: boolean;
+    _enabled: boolean;
+    _configuration: CentralCertificateConfiguration;
     private _usePvkPass: boolean = true;
     private _identityPassword: string = null;
     private _identityPasswordConfirm: string = null;
@@ -82,10 +83,9 @@ export class CentralCertificateComponent implements OnInit, OnDestroy {
     private _privateKeyPasswordConfirm: string = null;
     private _subscriptions: Array<Subscription> = [];
     private _original: CentralCertificateConfiguration;
-    private _configuration: CentralCertificateConfiguration;
     @ViewChildren(NgModel) private _validators: QueryList<NgModel>;
 
-    constructor(private _service: CentralCertificateService) {
+    constructor(public _service: CentralCertificateService) {
     }
 
     private get canEnable(): boolean {
@@ -162,7 +162,7 @@ export class CentralCertificateComponent implements OnInit, OnDestroy {
         }
     }
 
-    private onEnabled(val: boolean) {
+    onEnabled(val: boolean) {
         if (!val) {
             if (this._configuration && this._configuration.id) {
                 this._service.disable();
@@ -205,7 +205,7 @@ export class CentralCertificateComponent implements OnInit, OnDestroy {
         this._identityPasswordConfirm = null;
     }
 
-    private get isPending(): boolean {
+    get isPending(): boolean {
         return this._service.status == Status.Starting
             || this._service.status == Status.Stopping;
     }

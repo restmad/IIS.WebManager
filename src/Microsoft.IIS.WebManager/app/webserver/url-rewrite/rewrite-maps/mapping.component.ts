@@ -38,7 +38,7 @@ export class MappingComponent implements OnChanges {
     @Input() public mapping: RewriteMapping;
     @Output('delete') public deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    private _editing: boolean;
+    _editing: boolean;
     private _original: RewriteMapping;
 
     ngOnChanges(changes: { [key: string]: SimpleChange; }): any {

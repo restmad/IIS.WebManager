@@ -223,7 +223,7 @@ export class WebSiteList {
     @Input() actions: string = "edit,browse,start,stop,delete";
     @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
-    private _orderBy: OrderBy = new OrderBy();
+    _orderBy: OrderBy = new OrderBy();
     private _sortPipe: SortPipe = new SortPipe();
     private _range: Range = new Range(0, 0);
     private _view: Array<WebSite> = [];
@@ -253,7 +253,7 @@ export class WebSiteList {
         this._router.navigate(['webserver', 'websites', site.id]);
     }
 
-    private hasField(field: string): boolean {
+    hasField(field: string): boolean {
         return this.fields.indexOf(field) >= 0;
     }
 
@@ -262,7 +262,7 @@ export class WebSiteList {
         this._range = range;
     }
 
-    private doSort(field: string) {
+    doSort(field: string) {
         this._orderBy.sort(field);
         this._sortPipe.transform(this.model, this._orderBy.Field, this._orderBy.Asc, null, true);
         this.onRangeChange(this._range);

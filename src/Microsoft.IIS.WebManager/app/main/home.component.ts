@@ -1,6 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { Component } from '@angular/core';
 import { OptionsService } from './options.service';
 
 @Component({
@@ -39,7 +37,6 @@ import { OptionsService } from './options.service';
     `
 })
 export class HomeComponent {
-    constructor(private _options: OptionsService,
-        private _route: ActivatedRoute) {
+    constructor(public _options: OptionsService) {
     }
 }

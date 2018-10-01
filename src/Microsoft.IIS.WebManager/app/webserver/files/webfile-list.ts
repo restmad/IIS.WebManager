@@ -97,20 +97,18 @@ import { WebSite } from '../websites/site';
     `]
 })
 export class WebFileListComponent implements OnInit, OnDestroy {
-    private _current: WebFile;
+    _current: WebFile;
+    _selected: Array<WebFile> = [];
+
     private _newDir: WebFile = null;
     private _ignoreDragLeave: boolean;
     private _orderBy: OrderBy = new OrderBy();
     private _sortPipe: SortPipe = new SortPipe();
     private _filter: string = "";
     private _subscriptions = [];
-
     private _range: Range = new Range(0, 0);
-
-    private _selected: Array<WebFile> = [];
     private _items: Array<WebFile> = [];
     private _view: Array<WebFile> = [];
-
     private _active: WebFile;
 
     @ViewChild('dragInfo') _dragInfo: ElementRef;

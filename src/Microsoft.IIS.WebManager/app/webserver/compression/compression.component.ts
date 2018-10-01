@@ -63,13 +63,13 @@ import { NotificationService } from '../../notification/notification.service';
 })
 export class CompressionComponent implements OnInit, OnDestroy {
     public id: string;
-
-    private model: ResponseCompression;
+    _error: any;
+    model: ResponseCompression;
     private _original: ResponseCompression;
     private _locked: boolean;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: CompressionService,
+    constructor(public _service: CompressionService,
                 private _notificationService: NotificationService) {
     }
 

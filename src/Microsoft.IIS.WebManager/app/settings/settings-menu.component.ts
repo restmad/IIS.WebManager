@@ -79,7 +79,7 @@ import { Selector } from '../common/selector';
 })
 export class SettingsMenuComponent implements OnDestroy {
     @ViewChild('settingsMenu')
-    private _settingsMenu: Selector;
+    _settingsMenu: Selector;
     private _subscriptions: Array<Subscription> = [];
     private _window: Window = window;
 
@@ -96,7 +96,7 @@ export class SettingsMenuComponent implements OnDestroy {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private onClickSettings(): void {
+    onClickSettings(): void {
         this._settingsMenu.toggle();
     }
 }

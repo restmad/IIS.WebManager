@@ -63,8 +63,8 @@ export class FileEditor {
     @Input() public file: ApiFile;
 
     private static MAX_FILE_SIZE: number = (1024 * 1024) * 10; // bytes (10MB)
-    private _unsupported: boolean;
-    private _text: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+    _unsupported: boolean;
+    _text: BehaviorSubject<string> = new BehaviorSubject<string>(null);
     private _dirty;
 
     @ViewChild(CodeEditorComponent) private _codeEditor: CodeEditorComponent;
@@ -73,11 +73,11 @@ export class FileEditor {
     constructor(@Inject("FilesService") private _svc: FilesService) {
     }
 
-    private get text(): Observable<string> {
+    get text(): Observable<string> {
         return this._text.asObservable();
     }
 
-    private save(e: Event) {
+    save(e: Event) {
         e.preventDefault();
 
         if (this._dirty) {
@@ -113,7 +113,7 @@ export class FileEditor {
         this._svc.download(this.file);
     }
 
-    private onchange(e) {
+    onchange(e) {
         this._dirty = true;
     }
 
@@ -141,7 +141,7 @@ export class FileEditor {
             .catch(e => { this._unsupported = true });
     }
 
-    private codeEditorLoaded(lang: any) {
+    codeEditorLoaded(lang: any) {
         if (lang) {
             this.getFileText().then(txt => {
                 if (txt) {

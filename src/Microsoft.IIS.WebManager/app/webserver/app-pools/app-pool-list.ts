@@ -225,7 +225,7 @@ export class AppPoolList {
     @Input() actions: string = "edit,recycle,start,stop,delete";
     @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
-    private _orderBy: OrderBy = new OrderBy();
+    _orderBy: OrderBy = new OrderBy();
 
     constructor(@Inject("AppPoolsService") private _service: AppPoolsService,
                 private _router: Router) {

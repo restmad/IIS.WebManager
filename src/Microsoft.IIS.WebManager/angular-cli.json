@@ -2,32 +2,34 @@
   "apps": [
     {
       "assets": [
-        { "glob": "manifest.json", "input": "app/resources", "output": "" },
-        { "glob": "**/*", "input": "app/assets/", "output": "assets/" }
+        { "glob": "manifest.json", "input": "resources", "output": "" },
+        { "glob": "**/*", "input": "assets/", "output": "assets/" },
+        "web.config"
       ],
-      "index": "app/main/index.html",
-      "main": "app/main/main.ts",
-      "root": "",
+      "index": "index.html",
+      "main": "main/main.ts",
+      "root": "app",
+      "outDir": "dist/app",
       "scripts": [
-        "node_modules/jquery/dist/jquery.min.js",
-        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "styles": [
-        "node_modules/primeng/resources/primeng.min.css",
-        "node_modules/primeng/resources/themes/bootstrap/theme.css",
-        "node_modules/font-awesome/css/font-awesome.min.css",
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "themes/main.css",
-        "themes/themes.common.css",
-        "themes/themes.blue.css"
+        "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/primeng/resources/themes/bootstrap/theme.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../themes/main.css",
+        "../themes/themes.common.css",
+        "../themes/themes.blue.css"
       ],
       "tsconfig": "tsconfig.json",
-      "environmentSource": "app/environments/environment.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "app/environments/environment.ts",
-        "prod": "app/environments/environment.ts",
-        "wac": "app/environments/environment.wac.ts",
-        "wac-prod": "app/environments/environment.wac.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.ts",
+        "wac": "environments/environment.wac.ts",
+        "wac-prod": "environments/environment.wac.prod.ts"
       }
     }
   ],
@@ -43,7 +45,7 @@
     }
   },
   "project": {
-    "name": "wac-iis",
+    "name": "IIS Web Manager",
     "version": "1.0.0-beta.001"
   }
 }

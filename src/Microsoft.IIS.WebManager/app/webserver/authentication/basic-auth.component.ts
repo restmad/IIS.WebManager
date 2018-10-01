@@ -41,12 +41,12 @@ import { NotificationService } from '../../notification/notification.service';
     `
 })
 export class BasicAuthenticationComponent implements OnDestroy {
-    private _model: BasicAuthentication;
+    _model: BasicAuthentication;
     private _locked: boolean;
     private _original: BasicAuthentication;
     private _subscriptions: Array<Subscription> = [];
 
-    constructor(private _service: AuthenticationService,
+    constructor(public _service: AuthenticationService,
                 private _notificationService: NotificationService) {
         this._subscriptions.push(this._service.basicAuth.subscribe(auth => {
             this.setFeature(auth);

@@ -42,14 +42,15 @@ import { ApiConnection } from '../connect/api-connection';
     `]
 })
 export class ServerListComponent implements OnDestroy {
-    private _servers: Array<ApiConnection> = [];
+    _servers: Array<ApiConnection> = [];
+    _orderBy: OrderBy = new OrderBy();
+    _newServer: ApiConnection;
+
     private _view: Array<ApiConnection> = [];
     private _active: ApiConnection;
-    private _orderBy: OrderBy = new OrderBy();
     private _sortPipe: SortPipe = new SortPipe();
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(Selector) private _selector: Selector;
-    private _newServer: ApiConnection;
 
     constructor(private _svc: ConnectService) {
 
@@ -68,7 +69,7 @@ export class ServerListComponent implements OnDestroy {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private onNewServer() {
+    onNewServer() {
         let con = new ApiConnection(Constants.localUrl);
         con.displayName = Constants.localDisplayName;
         con.persist = true;
@@ -79,7 +80,7 @@ export class ServerListComponent implements OnDestroy {
         this._newServer = null;
     }
 
-    private sort(field: string) {
+    sort(field: string) {
         this._orderBy.sort(field);
         this.doSort();
     }

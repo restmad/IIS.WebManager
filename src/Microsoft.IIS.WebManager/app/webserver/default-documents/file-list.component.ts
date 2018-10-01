@@ -44,9 +44,8 @@ export class FileListItem {
     @Output() edit: EventEmitter<any> = new EventEmitter();
     @Output() close: EventEmitter<any> = new EventEmitter();
 
+    _editing: boolean;
     private _original: File;
-    private _editing: boolean;
-
 
     constructor(private _service: DefaultDocumentsService) {
     }
@@ -158,8 +157,8 @@ export class FileListItem {
     `
 })
 export class FileListComponent implements OnInit, OnDestroy {
-    private _files: Array<File>;
-    private _editing: File;
+    _files: Array<File>;
+    _editing: File;
     private _newFile: File;
     private _orderBy: OrderBy = new OrderBy();
     private _subs = [];
@@ -181,7 +180,7 @@ export class FileListComponent implements OnInit, OnDestroy {
         this._subs.forEach(s => s.unsubscribe());
     }
 
-    private add() {
+    add() {
         this._newFile = new File();
         this._newFile.name = "";
 

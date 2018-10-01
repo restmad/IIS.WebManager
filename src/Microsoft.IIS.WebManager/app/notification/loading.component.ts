@@ -21,7 +21,7 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
     `]
 })
 export class LoadingComponent implements OnInit, OnDestroy {
-    private _active: boolean;
+    _active: boolean;
 
     constructor(private _loadingSvc: LoadingService) {
     }

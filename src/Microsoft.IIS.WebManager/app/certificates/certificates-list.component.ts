@@ -103,16 +103,15 @@ import { CertificatesService } from './certificates.service';
 export class CertificatesListComponent implements OnInit, OnDestroy {
     @Output() public itemSelected: EventEmitter<any> = new EventEmitter();
     @Input() public lazy: boolean;
-
+    _items: Array<Certificate>;
     private _filter = "";
     private certs: Array<Certificate>;
     private _view: Array<Certificate> = [];
-    private _items: Array<Certificate>;
     private _range: Range = new Range(0, 0);
     private _subscriptions: Array<Subscription> = [];
     @ViewChildren(CertificateListItem) private _listItems: QueryList<CertificateListItem>;
 
-    constructor(private _service: CertificatesService) {
+    constructor(public _service: CertificatesService) {
     }
 
     ngOnInit() {
@@ -159,7 +158,7 @@ export class CertificatesListComponent implements OnInit, OnDestroy {
         this.onRangeChange(this._range);
     }
 
-    private refresh() {
+    refresh() {
         this._service.load();
     }
 

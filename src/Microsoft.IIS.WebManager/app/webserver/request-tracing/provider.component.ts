@@ -68,9 +68,8 @@ export class ProviderComponent implements OnInit {
 
     @ViewChildren(NgModel) validators: QueryList<NgModel>;
 
-    private _isEditing: boolean;
+    _isEditing: boolean;
     private _original: Provider;
-
 
     constructor(private _eRef: ElementRef, private _service: RequestTracingService) {
     }

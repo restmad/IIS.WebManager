@@ -32,11 +32,10 @@ import { RequestTracingService } from './request-tracing.service';
     `
 })
 export class RulesComponent implements OnInit {
+    _rules: Array<RequestTracingRule>;
     private _editing: RequestTracingRule;
     private _orderBy: string;
     private _orderByAsc: boolean;
-    private _rules: Array<RequestTracingRule>;
-
     private _newRule: RequestTracingRule;
 
     constructor(private _service: RequestTracingService) {

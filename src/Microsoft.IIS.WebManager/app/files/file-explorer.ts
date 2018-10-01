@@ -36,7 +36,7 @@ import { FileNavService } from './file-nav.service';
     `]
 })
 export class FileExplorer implements OnDestroy {
-    private _current: ApiFile;
+    _current: ApiFile;
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(FileListComponent) private _list: FileListComponent;
 
@@ -58,39 +58,39 @@ export class FileExplorer implements OnDestroy {
         this._subscriptions.forEach(sub => sub.unsubscribe());
     }
 
-    private refresh() {
+    refresh() {
         this._list.refresh();
     }
 
-    private createLocation() {
+    createLocation() {
         this._list.createLocation();
     }
 
-    private createDirectory() {
+    createDirectory() {
         this._list.createDirectory();
     }
 
-    private createFile() {
+    createFile() {
         this._list.createFile();
     }
 
-    private deleteFiles(event: Event, files: Array<ApiFile>) {
+    deleteFiles(event: Event, files: Array<ApiFile>) {
         this._list.deleteFiles(event, files);
     }
 
-    private upload(files: Array<File>) {
+    upload(files: Array<File>) {
         this._svc.upload(this._current, files);
     }
 
-    private isDir(f: ApiFile): boolean {
+    isDir(f: ApiFile): boolean {
         return ApiFile.isDir(f);
     }
 
-    private atRoot(): boolean {
+    atRoot(): boolean {
         return !!(this._current && !this._current.physical_path);
     }
 
-    private showNewLocation() {
+    showNewLocation() {
 
         //
         // If the list is being used to create a folder/dir hide the button
@@ -102,7 +102,7 @@ export class FileExplorer implements OnDestroy {
         return this.atRoot() || null;
     }
 
-    private showNewFolder() {
+    showNewFolder() {
 
         //
         // If the list is being used to create a folder/dir disable the button

@@ -30,7 +30,7 @@ export class NewVersionNotificationComponent {
     constructor(private _notificationService: NotificationService) {
     }
 
-    private onNavigate(): void {
+    onNavigate(): void {
         this._notificationService.remove(this._notificationService.getNotifications().find(n => n.componentName == 'NewVersionNotificationComponent'));
     }
 }

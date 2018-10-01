@@ -109,7 +109,7 @@ export class WebAppGeneralComponent {
         return true;
     }
 
-    private onSelectPath(event: Array<ApiFile>) {
+    onSelectPath(event: Array<ApiFile>) {
         if (event.length == 1) {
             this.model.physical_path = event[0].physical_path;
             this.onModelChanged();

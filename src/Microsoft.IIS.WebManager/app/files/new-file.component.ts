@@ -36,7 +36,7 @@ export class NewFileComponent {
     @Output() cancel: EventEmitter<any> = new EventEmitter<any>();
     @Output() save: EventEmitter<any> = new EventEmitter<any>();
 
-    private onOk() {
+    onOk() {
         if (this.model.name) {
             this.save.next();
         }

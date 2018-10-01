@@ -10,7 +10,7 @@ import { OutboundSection, OutboundRule, PatternSyntax, OutboundTags, ActionType,
     selector: 'outbound-rules',
     template: `
         <error [error]="_service.outboundError"></error>
-        <div *ngIf="!_service.outboundError && _settings">
+        <div *ngIf="!_service.outboundError && _settings != null">
             <override-mode class="pull-right"
                 [metadata]="_settings.metadata"
                 [scope]="_settings.scope"
@@ -53,13 +53,13 @@ import { OutboundSection, OutboundRule, PatternSyntax, OutboundTags, ActionType,
     `]
 })
 export class OutboundRulesComponent implements OnDestroy {
-    private _settings: OutboundSection;
+    _settings: OutboundSection;
     private _newRule: OutboundRule;
     private _rules: Array<OutboundRule> = [];
     private _subscriptions: Array<Subscription> = [];
     @ViewChild(Selector) private _newRuleSelector: Selector;
 
-    constructor(private _service: UrlRewriteService) {
+    constructor(public _service: UrlRewriteService) {
         this._subscriptions.push(this._service.outboundSettings.subscribe(settings => this._settings = settings));
         this._subscriptions.push(this._service.outboundRules.subscribe(r => {
             this._rules = r;

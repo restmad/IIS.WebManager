@@ -104,7 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
         return isActive;
     }
 
-    private dragOver(e: DragEvent) {
+    dragOver(e: DragEvent) {
         e.preventDefault();
         e.dataTransfer.dropEffect = "none"; // Disable drop
     }
