@@ -22,7 +22,11 @@ import { WebSiteListComponentName,
     StaticContentComponentName,
     UrlRewriteComponentName,
     ComponentReference,
-    FilesComponentName} from '../main/settings'
+    FilesComponentName,
+    UploadComponentName,
+    WarningComponentName,
+    AppModuleName
+} from '../main/settings'
 
 
 export class ComponentLoader {
@@ -143,6 +147,21 @@ export class ComponentLoader {
             case FilesComponentName:
                 moduleType = import('../files/files.module').then(m => {
                     return m.FilesModule
+                }) ; break;
+
+            case UploadComponentName:
+                moduleType = import('../files/upload.component').then(m => {
+                    return m.Module
+                }) ; break;
+
+            case WarningComponentName:
+                moduleType = import('../notification/warning.component').then(m => {
+                return m.Module
+            }) ; break;
+
+            case AppModuleName:
+                moduleType = import('../main/app.module').then(m => {
+                    return m.AppModule
                 }) ; break;
 
             default:

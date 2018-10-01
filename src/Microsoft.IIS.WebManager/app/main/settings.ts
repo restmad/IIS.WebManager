@@ -29,6 +29,9 @@ export const RequestTracingComponentName = "RequestTracingComponent"
 export const StaticContentComponentName = "StaticContentComponent"
 export const UrlRewriteComponentName = "UrlRewriteComponent"
 export const FilesComponentName = "FilesComponent"
+export const UploadComponentName = "UploadComponent"
+export const WarningComponentName = "WarningComponent"
+export const AppModuleName = "AppModule"
 
 export class ComponentReference {
     constructor(public name: string, public ico: string, public component_name: string, public api_name: string, public api_path: string) {}

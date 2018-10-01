@@ -2,7 +2,6 @@ import {Injectable, Optional} from '@angular/core';
 import {Http, RequestMethod} from '@angular/http';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/src/providers/angulartics2-ga';
 
-import 'rxjs/add/operator/toPromise';
 
 import {HttpClient} from '../common/httpclient';
 import {ConnectService} from '../connect/connect.service';
@@ -11,7 +10,12 @@ import {NotificationService} from '../notification/notification.service';
 import {Notification, NotificationType} from '../notification/notification';
 
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
+import { ComponentReference, AppModuleName } from '../main/settings';
+
+import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/first';
+
+const AppModuleReference: ComponentReference = { name: AppModuleName, ico: null, component_name: AppModuleName, api_name: null, api_path: null };
 
 @Injectable()
 export class VersionService {
@@ -55,7 +59,7 @@ export class VersionService {
                 this._notificationService.notify({
                     type: NotificationType.Information,
                     componentName: "NewVersionNotificationComponent",
-                    module: "app/main/app.module#AppModule",
+                    module: AppModuleReference,
                     data: {
                         version: SETTINGS.api_setup_version
                     },
