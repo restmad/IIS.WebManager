@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {Observable} from 'rxjs/Observable'
-import {Subscription} from 'rxjs/subscription'
+import {Subscription} from 'rxjs/Subscription'
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
