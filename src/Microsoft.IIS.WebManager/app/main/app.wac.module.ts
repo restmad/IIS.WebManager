@@ -6,7 +6,7 @@ import {
     AppErrorHandler
 } from '@microsoft/windows-admin-center-sdk/angular'
 import { WACRuntime } from '../runtime/runtime.wac'
-import { BootstrapModule } from './boostrap.module'
+import { BootstrapModule } from './bootstrap.module'
 import { AppComponent } from './app.component'
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { NgModule, } from '@angular/core'
-import { BootstrapModule } from './boostrap.module'
+import { BootstrapModule } from './bootstrap.module'
 import { StandardRuntime } from '../runtime/runtime'
 import { AppComponent } from './app.component'
 
