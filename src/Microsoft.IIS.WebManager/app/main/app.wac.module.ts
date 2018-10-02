@@ -1,6 +1,9 @@
 import { Inject, NgModule, ErrorHandler } from '@angular/core'
 import { Router } from '@angular/router'
 import {
+    CoreServiceModule,
+    ResourceService,
+    IdleComponent,
     AppContextService,
     NavigationService,
     AppErrorHandler
@@ -10,9 +13,10 @@ import { BootstrapModule } from './bootstrap.module'
 import { AppComponent } from './app.component'
 
 @NgModule({
-    imports: [BootstrapModule],
+    imports: [ BootstrapModule, CoreServiceModule ],
     bootstrap: [ AppComponent ],
     providers: [
+        ResourceService,
         { provide: ErrorHandler, useClass: AppErrorHandler },
         { provide: "Runtime", useClass: WACRuntime}
     ]
@@ -27,5 +31,6 @@ export class WACAppModule {
         // NOTE: all services are only available after app context module is initialized
         this.runtime.AppContextService = this.appContextService
         this.runtime.NavigationService = this.navigationService
+        this.router.config.push({ path: 'idle', component: IdleComponent })
     }
 }
