@@ -1,16 +1,20 @@
 import { Runtime } from './runtime'
 import { AppContextService, NavigationService } from '@microsoft/windows-admin-center-sdk/angular'
-import { Router } from "@angular/router"
+import { Injectable } from '@angular/core'
 
+@Injectable()
 export class WACRuntime implements Runtime {
-    public NavigationService: NavigationService
-    public AppContextService: AppContextService
+
+    constructor(
+        private appContext: AppContextService,
+        private navigationService: NavigationService) {
+    }
 
     public InitContext(){
-        this.AppContextService.ngInit({ navigationService: this.NavigationService })
+        this.appContext.ngInit({ navigationService: this.navigationService })
     }
 
     public DestroyContext(){
-        this.AppContextService.ngDestroy()
+        this.appContext.ngDestroy()
     }
 }
